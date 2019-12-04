@@ -1,0 +1,45 @@
+version: "3"
+# Cassandra Stack for DRAS-TIC Trellis Developement
+#
+# Avoid redeploys using the docker pause/unpause commands:
+# 	docker pause $(docker container ls -q -f name=cassandra)
+#
+# https://forums.docker.com/t/cassandra-on-docker-swarm/27923/3 - placement ideas
+# https://github.com/thelastpickle/docker-cassandra-bootstrap - monitoring/grafana, other docker details
+services:
+  cassandra-1:
+    image: cassandra
+    environment:
+      CASSANDRA_BROADCAST_ADDRESS: cassandra-1
+      CASSANDRA_LISTEN_ADDRESS: tasks.cassandra-1
+    ports:
+      - 9042:9042
+      - 7000
+    networks:
+      - cassandra
+  cassandra-2:
+    image: cassandra
+    environment:
+      CASSANDRA_BROADCAST_ADDRESS: cassandra-2
+      CASSANDRA_LISTEN_ADDRESS: tasks.cassandra-2
+      CASSANDRA_SEEDS: cassandra-1
+    depends_on:
+      - cassandra-1
+    ports:
+      - 7000
+    networks:
+      - cassandra
+  cassandra-init:
+    image: trellisldp/trellis-cassandra-init:develop
+    depends_on:
+      - cassandra-1
+      - cassandra-2
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+    command: cqlsh cassandra-1 -f /trellis.cql
+    networks:
+      - cassandra
+networks:
+  cassandra:

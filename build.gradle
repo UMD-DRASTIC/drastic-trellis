@@ -1,0 +1,105 @@
+// this block is necessary to make enforcedPlatform work for Quarkus plugin available
+// only locally (snapshot) that is also importing the Quarkus BOM
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+    dependencies {
+        classpath "io.quarkus:quarkus-gradle-plugin:${quarkusPluginVersion}"
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+ext {
+    /* Dependencies */
+    trellisVersion = '0.9.0-SNAPSHOT'
+    jenaVersion = '3.13.1'
+    jjwtVersion = '0.10.7'
+    mustacheVersion = '0.9.6'
+    guavaVersion = '28.1-jre'
+    activationApiVersion = '1.2.1'
+    jaxbApiVersion = '2.3.2'
+}
+
+//quarkusDev {
+//    doFirst {
+//        project.buildscript.repositories.gradlePluginPortal()
+//        project.buildscript.dependencies.add('classpath', "io.quarkus:quarkus-gradle-plugin:${quarkusPluginVersion}")
+//    }
+//}
+
+apply plugin: 'io.quarkus'
+
+repositories {
+     mavenLocal()
+     mavenCentral()
+}
+
+dependencies {
+    implementation enforcedPlatform("org.trellisldp:trellis-bom:$trellisVersion")
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'io.quarkus:quarkus-resteasy-jsonb'
+    implementation 'io.quarkus:quarkus-resteasy'
+    implementation 'io.quarkus:quarkus-security'
+
+    // Trellis Application
+    implementation "org.trellisldp:trellis-app"
+    implementation "org.trellisldp:trellis-cdi"
+
+    // Trellis authN/authZ
+    implementation "org.trellisldp:trellis-auth-oauth"
+    implementation "org.trellisldp:trellis-webac"
+
+    // Trellis components
+    implementation "org.trellisldp:trellis-audit"
+    implementation "org.trellisldp:trellis-cache"
+    implementation "org.trellisldp:trellis-constraint-rules"
+    implementation "org.trellisldp:trellis-event-jsonb"
+    implementation "org.trellisldp:trellis-io-jena"
+    implementation "org.trellisldp:trellis-rdfa"
+    implementation "org.trellisldp:trellis-vocabulary"
+
+    // Cassandra dependencies
+    implementation 'io.quarkus:quarkus-smallrye-reactive-messaging'
+    implementation "org.trellisldp.ext:trellis-cassandra:${trellisVersion}"
+    // implementation "org.trellisldp.ext:trellis-namespaces:${trellisVersion}"
+    implementation "org.trellisldp:trellis-reactive"
+
+    implementation "com.github.spullara.mustache.java:compiler:$mustacheVersion"
+    implementation "com.google.guava:guava:$guavaVersion"
+    implementation "io.jsonwebtoken:jjwt-api:$jjwtVersion"
+    implementation "io.jsonwebtoken:jjwt-jackson:$jjwtVersion"
+    implementation "io.jsonwebtoken:jjwt-impl:$jjwtVersion"
+    implementation "org.apache.jena:jena-arq:$jenaVersion"
+    implementation "org.apache.jena:jena-rdfconnection:$jenaVersion"
+    implementation "org.apache.jena:jena-tdb2:$jenaVersion"
+
+    runtimeClasspath "jakarta.activation:jakarta.activation-api:$activationApiVersion"
+    runtimeClasspath "jakarta.xml.bind:jakarta.xml.bind-api:$jaxbApiVersion"
+
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.rest-assured:rest-assured'
+}
+
+group 'edu.umd.info.dcic'
+version '0.0.1-SNAPSHOT'
+
+compileJava {
+    options.compilerArgs << '-parameters'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+test {
+	//systemProperty "quarkus.test.profile", "foo"
+    systemProperty "trellis.test.cassandra.enable", project.findProperty("trellis.test.cassandra.enable") ?: System.getenv("TEST_CASSANDRA_ENABLE")
+    systemProperty 'trellis.cassandra.binary-read-consistency', 'ALL'
+    systemProperty 'trellis.cassandra.binary-write-consistency', 'ALL'
+    systemProperty 'project.build.directory', "${project.buildDir}/logs"
+}
