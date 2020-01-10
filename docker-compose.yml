@@ -7,6 +7,15 @@ version: "3"
 # https://forums.docker.com/t/cassandra-on-docker-swarm/27923/3 - placement ideas
 # https://github.com/thelastpickle/docker-cassandra-bootstrap - monitoring/grafana, other docker details
 services:
+  trellis:
+    image: gregjan/drastic-trellis:latest
+    ports:
+      - 8080:8080
+    environment:
+      - TRELLIS_CASSANDRA_CONTACT_ADDRESS=cassandra-1
+      - TRELLIS_CASSANDRA_CONTACT_PORT=9042
+    networks:
+      - cassandra
   cassandra-1:
     image: cassandra
     environment:

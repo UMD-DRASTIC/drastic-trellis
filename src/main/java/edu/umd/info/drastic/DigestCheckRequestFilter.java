@@ -16,33 +16,36 @@ package edu.umd.info.drastic;
 import static java.util.Collections.emptyList;
 import static org.slf4j.LoggerFactory.getLogger;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.security.DigestInputStream;
 import java.security.MessageDigest;
+import java.text.MessageFormat;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerRequestFilter;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
-import javax.ws.rs.ext.ReaderInterceptor;
-import javax.ws.rs.ext.ReaderInterceptorContext;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.jboss.resteasy.spi.NoLogWebApplicationException;
 import org.slf4j.Logger;
 
 @Provider
-public class DigestCalculationReaderInterceptor implements ReaderInterceptor {
+public class DigestCheckRequestFilter implements ContainerRequestFilter {
     
-    private static final Logger LOGGER = getLogger(DigestCalculationReaderInterceptor.class);
-    public static final String DIGEST_ALGORITHM_PROPERTY = "digest.algorithm.prop";
-    public static final String DIGEST_SUPPLIED_PROPERTY = "digest.supplied.prop";
-    public static final String DIGEST_CALCULATED_PROPERTY = "digest.calculated.prop";
+    private static final Logger LOGGER = getLogger(DigestCheckRequestFilter.class);
 
     @Override
-    public Object aroundReadFrom(ReaderInterceptorContext context) throws IOException, WebApplicationException {
+    public void filter(ContainerRequestContext context) throws IOException, WebApplicationException {
 	// Fedora Specification 1.0, section 3.5.1 and 3.6.2:
 	//   An HTTP POST request that would create an LDP-NR and includes a Digest header (as described in [RFC3230])
 	//   for which the instance-digest in that header does not match that of the new LDP-NR MUST be rejected with 
@@ -69,29 +72,37 @@ public class DigestCalculationReaderInterceptor implements ReaderInterceptor {
         	
         // Fail quickly if algorithm unsupported
         if(digests.isEmpty() && context.getHeaders().containsKey("Digest")) {
-            LOGGER.info("Digest header uses unsupported algorithm: {}", context.getHeaders().getFirst("Digest"));
-            throw new NoLogWebApplicationException(400);
+            String msg = MessageFormat.format("Digest header uses unsupported algorithm: {0}", context.getHeaders().getFirst("Digest"));
+            LOGGER.info(msg);
+            context.abortWith(Response.status(400, msg).build());
+            return;
     	}
     	
-        // Set up digest calculator
+        // Calculate digest by streaming to temporary file.
         MessageDigest digest = null;
         if(!digests.isEmpty()) {
+            File tmp = File.createTempFile("digestedUpload-", ".dat");
             digest = digests.keySet().stream().findAny().get(); // pick an algorithm
-            DigestInputStream digestStream = new DigestInputStream(context.getInputStream(), digest);
-            context.setInputStream(digestStream);
-        }
-        
-        Object result = context.proceed();
-        
-        // compare and throw error if mismatched
-        if(digest != null) {
-            String calculated = Base64.encodeBase64String(digest.digest());
             String supplied = digests.get(digest);
+            DigestInputStream digestStream = new DigestInputStream(context.getEntityStream(), digest);
+            byte[] buffer = new byte[8 * 1024];
+            int bytesRead;
+            try(FileOutputStream fos = new FileOutputStream(tmp)) {
+                while ((bytesRead = digestStream.read(buffer)) != -1) {
+                    fos.write(buffer, 0, bytesRead);
+                }
+            }
+            String calculated = Base64.encodeBase64String(digestStream.getMessageDigest().digest());
             if(!calculated.equals(supplied)) {
-        	LOGGER.debug("Computed {} digest value {} does not match supplied value {}", digest.getAlgorithm(), calculated, supplied);
-        	throw new NoLogWebApplicationException(409);
+        	String msg = MessageFormat.format("Upload rejected, computed {0} digest value {1} does not match supplied value {2}",
+        		digest.getAlgorithm(), calculated, supplied);
+        	LOGGER.info(msg);
+                context.abortWith(Response.status(409, msg).build());
+            } else {
+                InputStream is = Files.newInputStream(tmp.toPath(), StandardOpenOption.DELETE_ON_CLOSE);
+                context.setEntityStream(is);
             }
         }
-	return result;
     }
+
 }
