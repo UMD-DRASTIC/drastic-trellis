@@ -43,7 +43,7 @@ import org.slf4j.Logger;
 public class DigestCheckRequestFilter implements ContainerRequestFilter {
     
     private static final Logger LOGGER = getLogger(DigestCheckRequestFilter.class);
-
+    
     @Override
     public void filter(ContainerRequestContext context) throws IOException, WebApplicationException {
 	// Fedora Specification 1.0, section 3.5.1 and 3.6.2:
@@ -55,7 +55,7 @@ public class DigestCheckRequestFilter implements ContainerRequestFilter {
         // Header format is as follows:
         // 	Digest: md5=HUXZLQLMuI/KZ5KDcJPcOA==
         // 	Digest: SHA=thvDyvhfIqlvFe+A9MYgxAfm1q5=,unixsum=30637   
-	LOGGER.debug("running");
+	LOGGER.debug("running OMGOMGOMG");
         // Get all the supplied digests that we implement
         Map<MessageDigest, String> digests = context.getHeaders().getOrDefault("Digest", emptyList()).stream()
         	.flatMap( digest -> { return Stream.of(digest.split(",")); })

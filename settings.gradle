@@ -1,16 +1,9 @@
-pluginManagement {
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-    resolutionStrategy {
-        eachPlugin {
-            if (requested.id.id == 'io.quarkus') {
-                useModule("io.quarkus:quarkus-gradle-plugin:1.0.0.CR2")
-            }
-        }
-    }
+plugins {
+   id "com.gradle.enterprise" version "3.1.1"
 }
 
-rootProject.name='drastic-trellis'
+rootProject.name = 'drastic-trellis'
+include ':drastic-trellis-components'
+
+project(':drastic-trellis-components').projectDir = new File(rootDir, "components")
+

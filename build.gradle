@@ -1,105 +1,290 @@
-// this block is necessary to make enforcedPlatform work for Quarkus plugin available
-// only locally (snapshot) that is also importing the Quarkus BOM
-buildscript {
-    repositories {
-        mavenLocal()
-    }
-    dependencies {
-        classpath "io.quarkus:quarkus-gradle-plugin:${quarkusPluginVersion}"
-    }
-}
-
 plugins {
-    id 'java'
+    id 'com.github.ben-manes.versions' version "0.36.0"
+    id 'com.github.hierynomus.license' version "0.15.0"
+    id 'net.researchgate.release' version "2.8.1"
+    id 'org.owasp.dependencycheck' version "6.1.1"
 }
 
 ext {
-    /* Dependencies */
-    trellisVersion = '0.9.3'
-    jenaVersion = '3.13.1'
-    jjwtVersion = '0.10.7'
-    mustacheVersion = '0.9.6'
-    guavaVersion = '28.1-jre'
-    activationApiVersion = '1.2.1'
-    jaxbApiVersion = '2.3.2'
+    // Platform
+    quarkusVersion = "1.12.0.Final"
+
+    // Dependencies
+    commonsRdfVersion = "0.5.0"
+    jdbiVersion = "3.10.1"
+    mustacheVersion = "0.9.6"
+    trellisVersion = "0.17.0"
+
+    // Testing
+    commonsTextVersion = "1.9"
+    jenaVersion = "3.17.0"
+    otjPgVersion = "0.13.3"
+
+    // Tools
+    checkstyleVersion = "8.26"
+    jacocoVersion = "0.8.5"
+
+	// DRASTIC stuff
+    //    jjwtVersion = '0.11.2'
+    //activationApiVersion = '1.2.2'
+    //jaxbApiVersion = '2.3.3'
+    camelVersion = '3.7.1'
+    camelQuarkusVersion = '1.6.0'
+    camelLdpVersion = '0.2.1'
 }
 
-//quarkusDev {
-//    doFirst {
-//        project.buildscript.repositories.gradlePluginPortal()
-//        project.buildscript.dependencies.add('classpath', "io.quarkus:quarkus-gradle-plugin:${quarkusPluginVersion}")
-//    }
-//}
+allprojects { subproj ->
+    apply plugin: 'java-library'
+    apply plugin: 'maven-publish'
+    apply plugin: 'signing'
+    apply plugin: 'checkstyle'
+    apply plugin: 'com.github.hierynomus.license'
+    apply plugin: 'jacoco'
 
-apply plugin: 'io.quarkus'
+    ext {
+        vendor = 'UMD School of Information Studies, Advanced Information Collaborative'
+        homepage = 'https://ai-collaboratory.net'
+        docURL = 'https://http://drastic-testbed.umd.edu/'
+        license = 'Apache 2'
+    }
 
-repositories {
-     mavenLocal()
-     mavenCentral()
+    group = 'edu.umd.info.drastic'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        testImplementation platform("io.quarkus:quarkus-bom:$quarkusVersion")
+        //testImplementation Platform("org.junit:junit-bom")
+        testImplementation("org.junit.jupiter:junit-jupiter-api")
+        testRuntime("org.junit.jupiter:junit-jupiter-engine")
+    }
+
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
+
+    release {
+        tagTemplate = '$name-$version'
+        git {
+            /* Note: for maintenance branches, set this value to the appropriate branch name. */
+            requireBranch = 'main'
+            signTag = true
+        }
+    }
 }
 
-dependencies {
-    implementation enforcedPlatform("org.trellisldp:trellis-bom:$trellisVersion")
-    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
-    implementation 'io.quarkus:quarkus-resteasy-jsonb'
-    implementation 'io.quarkus:quarkus-resteasy'
-    implementation 'io.quarkus:quarkus-security'
+subprojects { subproj ->
 
-    // Trellis Application
-    implementation "org.trellisldp:trellis-app"
-    implementation "org.trellisldp:trellis-cdi"
+    sourceCompatibility = 11
+    targetCompatibility = 11
 
-    // Trellis authN/authZ
-    implementation "org.trellisldp:trellis-auth-oauth"
-    implementation "org.trellisldp:trellis-webac"
+    jar {
+        from("$rootDir/LICENSE") {
+            into "META-INF"
+        }
+    }
 
-    // Trellis components
-    implementation "org.trellisldp:trellis-audit"
-    implementation "org.trellisldp:trellis-cache"
-    implementation "org.trellisldp:trellis-constraint-rules"
-    implementation "org.trellisldp:trellis-event-jsonb"
-    implementation "org.trellisldp:trellis-io-jena"
-    implementation "org.trellisldp:trellis-rdfa"
-    implementation "org.trellisldp:trellis-vocabulary"
+    checkstyle {
+        configFile = rootProject.file('buildtools/src/main/resources/checkstyle/checkstyle.xml')
+        configProperties.checkstyleConfigDir = rootProject.file('buildtools/src/main/resources/checkstyle/')
+        toolVersion = checkstyleVersion
+    }
 
-    // Cassandra dependencies
-    implementation 'io.quarkus:quarkus-smallrye-reactive-messaging'
-    implementation "org.trellisldp.ext:trellis-cassandra:${trellisVersion}"
-    // implementation "org.trellisldp.ext:trellis-namespaces:${trellisVersion}"
-    implementation "org.trellisldp:trellis-reactive"
+    task javadocJar(type: Jar) {
+        classifier 'javadoc'
+        from("$rootDir/LICENSE") {
+            into "META-INF"
+        }
+        from javadoc
+    }
 
-    implementation "com.github.spullara.mustache.java:compiler:$mustacheVersion"
-    implementation "com.google.guava:guava:$guavaVersion"
-    implementation "io.jsonwebtoken:jjwt-api:$jjwtVersion"
-    implementation "io.jsonwebtoken:jjwt-jackson:$jjwtVersion"
-    implementation "io.jsonwebtoken:jjwt-impl:$jjwtVersion"
-    implementation "org.apache.jena:jena-arq:$jenaVersion"
-    implementation "org.apache.jena:jena-rdfconnection:$jenaVersion"
-    implementation "org.apache.jena:jena-tdb2:$jenaVersion"
+    task sourceJar(type: Jar) {
+        classifier 'sources'
+        from("$rootDir/LICENSE") {
+            into "META-INF"
+        }
+        from sourceSets.main.allSource
+    }
 
-    runtimeClasspath "jakarta.activation:jakarta.activation-api:$activationApiVersion"
-    runtimeClasspath "jakarta.xml.bind:jakarta.xml.bind-api:$jaxbApiVersion"
+    task processConfig(type: Copy) {
+        from('src/main/cfg') {
+            include '**/*.cfg'
+        }
+        into 'build/cfg/main'
+    }
 
-    testImplementation 'io.quarkus:quarkus-junit5'
-    testImplementation 'io.rest-assured:rest-assured'
+    classes {
+        classes.dependsOn processConfig
+    }
+
+    artifacts {
+        archives sourceJar
+    }
+
+    license {
+        include "**/*.java"
+        header rootProject.file('buildtools/src/main/resources/license/HEADER.txt')
+        strictCheck true
+        mapping {
+            java = 'SLASHSTAR_STYLE'
+        }
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                pom {
+                    packaging = 'jar'
+                    name = 'Trellis Linked Data Server: MicroProfile-based deployable applications'
+                    description = 'Deployable Trellis applications using MicroProfile and JavaEE'
+                    url = "https://www.trellisldp.org"
+                    inceptionYear = '2017'
+
+                    organization {
+                        name = project.vendor
+                        url = project.homepage
+                    }
+
+                    developers {
+                        developer {
+                            id = 'acoburn'
+                            name = 'Aaron Coburn'
+                            email = 'acoburn (at) apache (dot) org'
+                        }
+                    }
+
+                    scm {
+                        connection = 'scm:git:git://github.com/trellis-ldp/trellis-microprofile.git'
+                        developerConnection = 'scm:git:git@github.com/trellis-ldp/trellis-microprofile.git'
+                        url = 'https://github.com/trellis-ldp/trellis-microprofile'
+                        tag = 'HEAD'
+                    }
+
+                    licenses {
+                        license {
+                            name = 'Apache License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0'
+                            comments = 'Copyright (c) 2017-2020 Aaron Coburn and individual contributors'
+                        }
+                    }
+                }
+                pom.withXml {
+                    // eliminate test-scoped dependencies
+                    asNode().dependencies.removeAll { dep -> dep.scope == "test" }
+                }
+
+                from components.java
+
+                artifact(sourceJar) {
+                    classifier = 'sources'
+                }
+            }
+        }
+        repositories {
+            maven {
+                def sonatypeUsername = project.hasProperty('ossrhUsername') ? ossrhUsername : System.getenv("SONATYPE_USERNAME") ?: ""
+                def sonatypePassword = project.hasProperty('ossrhPassword') ? ossrhPassword : System.getenv("SONATYPE_PASSWORD") ?: ""
+                if (version.endsWith("SNAPSHOT")) {
+                    url "https://oss.sonatype.org/content/repositories/snapshots/"
+                } else {
+                    url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+                }
+                credentials {
+                    username sonatypeUsername
+                    password sonatypePassword
+                }
+            }
+        }
+    }
+
+    task install(dependsOn: [assemble, publishToMavenLocal])
+    task upload(dependsOn: [assemble, publish])
+
+    processResources {
+        outputs.upToDateWhen { false }
+        filesMatching(['**/features.xml', '**/banner.txt']) {
+            expand project.properties
+        }
+    }
+
+    signing {
+        required {
+            !version.toString().endsWith('-SNAPSHOT') && tasks.withType(PublishToMavenRepository).find {
+                gradle.taskGraph.hasTask it
+            }
+        }
+        sign publishing.publications
+    }
+
+    gradle.taskGraph.whenReady( { graph ->
+        tasks.withType(AbstractArchiveTask).each { archive ->
+            archive.doLast {
+                ant.checksum file: archive.archivePath, algorithm: 'sha-256', format: 'MD5SUM', fileext: '.sha256'
+            }
+        }
+    })
+
+    javadoc {
+        options.tags = ["apiNote:a:API Note:",
+                "implSpec:a:Implementation Requirements:",
+                "implNote:a:Implementation Note:"]
+
+        if (JavaVersion.current().isJava9Compatible()) {
+            options.addBooleanOption('html5', true)
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+        testLogging {
+            exceptionFormat "full"
+            showStackTraces false
+        }
+    }
+
+    afterReleaseBuild.dependsOn publish
+    afterReleaseBuild.dependsOn assemble
+
+    jacoco.toolVersion = jacocoVersion
+
+    jacocoTestReport {
+        reports {
+            xml.enabled = true
+            html.enabled = true
+        }
+    }
 }
 
-group 'edu.umd.info.dcic'
-version '0.0.1-SNAPSHOT'
+configure(rootProject) {
 
-compileJava {
-    options.compilerArgs << '-parameters'
-}
+    // Ignore alpha, beta, milestone and release candidates
+    dependencyUpdates.resolutionStrategy = {
+        componentSelection { rules ->
+            rules.all { ComponentSelection selection ->
+                boolean rejected = ['alpha', 'beta', 'cr', 'rc', 'm'].any { qualifier ->
+                    selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
+                }
+                if (rejected) {
+                    selection.reject("Release Candidate")
+                }
+            }
+        }
+    }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-}
+    buildScan {
+        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+        termsOfServiceAgree = 'yes'
+    }
 
-test {
-	//systemProperty "quarkus.test.profile", "foo"
-    systemProperty "trellis.test.cassandra.enable", project.findProperty("trellis.test.cassandra.enable") ?: System.getenv("TEST_CASSANDRA_ENABLE")
-    systemProperty 'trellis.cassandra.binary-read-consistency', 'ALL'
-    systemProperty 'trellis.cassandra.binary-write-consistency', 'ALL'
-    systemProperty 'project.build.directory', "${project.buildDir}/logs"
+    task getVersion {
+        doLast {
+            println project.version
+        }
+    }
 }

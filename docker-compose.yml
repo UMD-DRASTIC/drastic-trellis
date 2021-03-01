@@ -12,8 +12,9 @@ services:
     ports:
       - 8080:8080
     environment:
-      - TRELLIS_CASSANDRA_CONTACT_ADDRESS=cassandra-1
-      - TRELLIS_CASSANDRA_CONTACT_PORT=9042
+      TRELLIS_CASSANDRA_CONTACT_ADDRESS: cassandra-1
+      TRELLIS_CASSANDRA_CONTACT_PORT: 9042
+      TRELLIS_CASSANDRA_METRICS_DIR: "/metrics/{{.Task.Name}}"
     networks:
       - cassandra
   cassandra-1:

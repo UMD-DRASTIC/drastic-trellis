@@ -20,9 +20,9 @@ import static javax.ws.rs.core.HttpHeaders.LINK;
 import static javax.ws.rs.core.Link.TYPE;
 import static javax.ws.rs.core.Link.fromUri;
 import static org.slf4j.LoggerFactory.getLogger;
-import static org.trellisldp.http.core.HttpConstants.EXT;
-import static org.trellisldp.http.core.HttpConstants.MEMENTO_DATETIME;
-import static org.trellisldp.http.core.HttpConstants.TIMEMAP;
+import static org.trellisldp.common.HttpConstants.EXT;
+import static org.trellisldp.common.HttpConstants.MEMENTO_DATETIME;
+import static org.trellisldp.common.HttpConstants.TIMEMAP;
 
 import java.io.IOException;
 
