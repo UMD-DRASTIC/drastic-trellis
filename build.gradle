@@ -25,9 +25,6 @@ ext {
     jacocoVersion = "0.8.5"
 
 	// DRASTIC stuff
-    //    jjwtVersion = '0.11.2'
-    //activationApiVersion = '1.2.2'
-    //jaxbApiVersion = '2.3.3'
     camelVersion = '3.7.1'
     camelQuarkusVersion = '1.6.0'
     camelLdpVersion = '0.2.1'

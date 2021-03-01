@@ -4,6 +4,7 @@ plugins {
 
 rootProject.name = 'drastic-trellis'
 include ':drastic-trellis-components'
+include ':drastic-trellis-cassandra'
 
 project(':drastic-trellis-components').projectDir = new File(rootDir, "components")
-
+project(':drastic-trellis-cassandra').projectDir = new File(rootDir, "cassandra")
