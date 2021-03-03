@@ -31,6 +31,8 @@ ext {
     camelVersion = '3.7.1'
     camelQuarkusVersion = '1.6.0'
     camelLdpVersion = '0.2.1'
+    
+    cassandraDropwizardMetricsVersion = '4.1.18'
 }
 
 allprojects { subproj ->

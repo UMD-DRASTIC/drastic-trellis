@@ -1,15 +1,12 @@
 package edu.umd.info.drastic;
 
-import static org.apache.camel.model.dataformat.JsonLibrary.Jackson;
 import static org.slf4j.LoggerFactory.getLogger;
-import static org.trellisldp.camel.ActivityStreamProcessor.ACTIVITY_STREAM_OBJECT_ID;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.kafka.KafkaConstants;
+import org.eclipse.microprofile.reactive.messaging.Incoming;
+import org.eclipse.microprofile.reactive.messaging.Outgoing;
 import org.slf4j.Logger;
-import org.trellisldp.camel.ActivityStreamProcessor;
 
 /**
  * A {@link RouteBuilder} that forwards the Trellis object activity to Kafka.
@@ -18,18 +15,14 @@ import org.trellisldp.camel.ActivityStreamProcessor;
  * with {@code @ApplicationScoped}.
  */
 @ApplicationScoped
-public class KafkaRouter extends RouteBuilder {
+public class KafkaRouter {
 
 	private static final Logger LOGGER = getLogger(KafkaRouter.class);
 	
-    @Override
-    public void configure() throws Exception {
-    	from("seda:trellis").routeId("KafkaRouter")
-        .unmarshal().json(Jackson)
-        .process(new ActivityStreamProcessor())
-        .filter(header(ACTIVITY_STREAM_OBJECT_ID).isNotNull())
-        	.setHeader(KafkaConstants.KEY, constant("Trellis")) // Key of the message
-        	.to("kafka:objects?brokers=${properties:kafka.address}");
-    	LOGGER.info("KafkaRouter configured");
+	@Incoming("trellis")
+    @Outgoing("objects-out")
+    public String sendKafka(String payload) throws Exception {
+		LOGGER.info("got a trellis:" + payload);
+    	return payload;
     }
 }

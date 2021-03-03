@@ -26,7 +26,7 @@ RUN adduser -G root --no-create-home --disabled-password 1001 \
   && chown -R 1001 /deployments \
   && chmod -R "g+rwX" /deployments \
   && chown -R 1001:root /deployments
-  
+
 RUN mkdir /metrics \
   && chown -R 1001 /metrics
 

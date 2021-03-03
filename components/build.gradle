@@ -30,6 +30,8 @@ dependencies {
     implementation 'io.quarkus:quarkus-smallrye-health'
     implementation 'io.quarkus:quarkus-smallrye-jwt'
     implementation 'io.quarkus:quarkus-smallrye-reactive-messaging'
+    implementation 'io.quarkus:quarkus-smallrye-reactive-messaging-kafka'
+    implementation 'io.quarkus:quarkus-smallrye-reactive-messaging-kafka-deployment'
 
     // Trellis Application
     implementation "org.trellisldp:trellis-app"
@@ -53,20 +55,26 @@ dependencies {
     implementation "org.trellisldp:trellis-rdfa"
     implementation "org.trellisldp:trellis-reactive"
     implementation "org.trellisldp:trellis-vocabulary"
-    
+
     // Trellis storage
     implementation("org.trellisldp.ext:trellis-cassandra:${trellisVersion}") //{
         //exclude group: 'javax.annotation', module: 'javax.annotation-api'
         //exclude group: 'org.eclipse.microprofile.health', module: 'microprofile-health-api'
     //}
+    implementation("io.dropwizard.metrics:metrics-core:${cassandraDropwizardMetricsVersion}")
 
 	// Camel
-    implementation enforcedPlatform("org.apache.camel:camel-bom:$camelVersion")
-    implementation "org.apache.camel:camel-api"
-    implementation "org.apache.camel:camel-kafka"
-    implementation enforcedPlatform("org.apache.camel.quarkus:camel-quarkus-bom:${camelQuarkusVersion}")
-    implementation "org.apache.camel.quarkus:camel-quarkus-main:${camelQuarkusVersion}"
-    implementation "org.trellisldp:camel-ldp:$camelLdpVersion"
+    //implementation enforcedPlatform("org.apache.camel:camel-bom:$camelVersion")
+    //implementation enforcedPlatform("org.apache.camel.quarkus:camel-quarkus-bom:${camelQuarkusVersion}")
+    //implementation "org.apache.camel.quarkus:camel-quarkus-main:${camelQuarkusVersion}"
+    //implementation "org.apache.camel:camel-api"
+    //implementation "org.apache.camel:camel-kafka"
+    //implementation "org.apache.camel:camel-seda"
+    ///implementation "org.apache.camel:camel-direct"
+    //implementation "org.apache.camel:camel-http"
+    //implementation "org.apache.camel:camel-jackson"
+    //implementation "org.apache.camel.karaf:camel-blueprint"
+    //implementation "org.trellisldp:camel-ldp:$camelLdpVersion"
 
     implementation "com.github.spullara.mustache.java:compiler:$mustacheVersion"
     implementation "com.google.guava:guava"
@@ -85,6 +93,8 @@ dependencies {
     testImplementation "org.jboss.resteasy:resteasy-client"
     testImplementation "org.apache.commons:commons-text:$commonsTextVersion"
     testImplementation "org.trellisldp:trellis-test"
+
+    testImplementation "org.testcontainers:kafka:1.15.2"
 }
 
 test {
@@ -103,4 +113,3 @@ test {
     systemProperty 'trellis.file.binary-path', "$buildDir/data/binaries"
     systemProperty 'mp.jwt.verify.publickey.location', 'https://www.trellisldp.org/tests/jwks.json'
 }
-
