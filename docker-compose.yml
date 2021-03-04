@@ -1,22 +1,40 @@
 version: "3"
-# Cassandra Stack for DRAS-TIC Trellis Developement
-#
-# Avoid redeploys using the docker pause/unpause commands:
-# 	docker pause $(docker container ls -q -f name=cassandra)
-#
-# https://forums.docker.com/t/cassandra-on-docker-swarm/27923/3 - placement ideas
-# https://github.com/thelastpickle/docker-cassandra-bootstrap - monitoring/grafana, other docker details
 services:
   trellis:
-    image: gregjan/drastic-trellis:latest
-    ports:
-      - 8080:8080
+    image: gregjan/drastic-trellis-cassandra:latest
     environment:
+      QUARKUS_LOG_CONSOLE_LEVEL: DEBUG
       TRELLIS_CASSANDRA_CONTACT_ADDRESS: cassandra-1
       TRELLIS_CASSANDRA_CONTACT_PORT: 9042
       TRELLIS_CASSANDRA_METRICS_DIR: "/metrics/{{.Task.Name}}"
+      MP_JWT_VERIFY_PUBLICKEY_LOCATION: "https://www.trellisldp.org/tests/jwks.json"
+      QUARKUS_PROFILE: "dev"
+      TRELLIS_HTTP_WEAK_ETAG: "false"
+      TRELLIS_HTTP_MEMENTO_HEADER_DATES: "false"
+      TRELLIS_HTTP_PRECONDITION_REQUIRED: "true"
+      TRELLIS_JDBC_LDP_TYPE: "true"
+      KAFKA_BOOTSTRAP_SERVERS: "kafka:9092"
+      QUARKUS_HTTP_CORS: "true"
+      #QUARKUS_HTTP_CORS_ORIGINS: "http://0.0.0.0,http://localhost"
+      QUARKUS_HTTP_CORS_METHODS: "HEAD,OPTIONS,PATCH,GET,PUT,POST,DELETE"
+      QUARKUS_HTTP_CORS_EXPOSED_HEADERS: "Content-Type,Link,Memento-Datetime,Preference-Applied,Location,Accept-Patch,Accept-Post,Accept-Ranges,ETag,Vary,WWW-Authenticate"
+      QUARKUS_HTTP_CORS_HEADERS: "Content-Type,Link,Accept,Accept-Datetime,Authorization,Prefer,Slug"
+      QUARKUS_HTTP_CORS_ACCESS_CONTROL_ALLOW_CREDENTIALS: "true"
+      QUARKUS_HTTP_CORS_ACCESS_CONTROL_MAX_AGE: "24H"
+      QUARKUS_HTTP_LIMITS_MAX_BODY_SIZE: "10G"
+    ports:
+      - 80:8080
     networks:
-      - cassandra
+      - drastic
+    depends_on:
+      - cassandra-1
+      - kafka
+    volumes:
+      - ./.trellis_data:/opt/trellis/data
+      - ./.trellis_log:/opt/trellis/log
+      # Please see note below about the ./etc directory
+      # - /local/trellis/etc:/opt/trellis/etc
+
   cassandra-1:
     image: cassandra
     environment:
@@ -26,7 +44,8 @@ services:
       - 9042:9042
       - 7000
     networks:
-      - cassandra
+      drastic:
+
   cassandra-2:
     image: cassandra
     environment:
@@ -38,18 +57,65 @@ services:
     ports:
       - 7000
     networks:
-      - cassandra
+      drastic:
+
   cassandra-init:
-    image: trellisldp/trellis-cassandra-init:develop
+    image: cassandra
     depends_on:
       - cassandra-1
       - cassandra-2
     deploy:
       restart_policy:
         condition: on-failure
-        delay: 30s
+        delay: 10s
+    volumes:
+      - ./trellis.cql:/trellis.cql
     command: cqlsh cassandra-1 -f /trellis.cql
     networks:
-      - cassandra
+      - drastic
+
+  zookeeper:
+    image: zookeeper:3.4.9
+    hostname: zookeeper
+    ports:
+      - 2181:2181
+    networks:
+      drastic:
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    hostname: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - 9092:9092
+      - 9093:9093
+    networks:
+      drastic:
+    environment:
+      KAFKA_LISTENERS: INT://kafka:9092,EXT://localhost:9093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INT:PLAINTEXT,EXT:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INT
+      KAFKA_ADVERTISED_LISTENERS: INT://kafka:9092,EXT://192.168.132.125:9093
+      #KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka:9092,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:19092
+      #KAFKA_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka:9092,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:19092
+      #KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
+      #KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
+      #KAFKA_ADVERTISED_HOST_NAME: kafka
+      #KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_BROKER_ID: 1
+      KAFKA_CREATE_TOPICS: "test:1:1"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  kafkacat:
+    image: confluentinc/cp-kafkacat
+    command: sleep infinity
+    networks:
+      drastic:
+
 networks:
-  cassandra:
+  drastic:
+    driver: overlay
