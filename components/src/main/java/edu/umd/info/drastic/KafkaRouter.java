@@ -2,11 +2,24 @@ package edu.umd.info.drastic;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
+import java.util.stream.StreamSupport;
+
 import javax.enterprise.context.ApplicationScoped;
 
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 import org.slf4j.Logger;
+import org.trellisldp.notification.jsonb.ActivityStreamMessage;
+import org.trellisldp.vocabulary.AS;
+import org.trellisldp.vocabulary.LDP;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+
+import io.smallrye.reactive.messaging.annotations.Broadcast;
+import io.smallrye.reactive.messaging.kafka.Record;
 
 /**
  * A {@link RouteBuilder} that forwards the Trellis object activity to Kafka.
@@ -16,13 +29,53 @@ import org.slf4j.Logger;
  */
 @ApplicationScoped
 public class KafkaRouter {
-
+	
 	private static final Logger LOGGER = getLogger(KafkaRouter.class);
 	
 	@Incoming("trellis")
+	@Broadcast
+	@Outgoing("broadcast")
+	public String broadcast(String payload) {
+		return payload;
+	}
+	
+	// TODO figure out gradle dev runtime w/docker-compose.yml
+	
+	@Incoming("broadcast")
     @Outgoing("objects-out")
-    public String sendKafka(String payload) throws Exception {
-		LOGGER.info("got a trellis:" + payload);
-    	return payload;
+    public Record<String, String> sendActivityStream(String payload) {
+		JsonNode as;
+		try {
+			as = new ObjectMapper().readTree(payload);
+		} catch (JsonProcessingException e) {
+			LOGGER.error("cannot parse activitystream", e);
+			return null;
+		}
+    	return Record.of(as.get("object").get("id").asText(), payload);
+    }
+	
+	@Incoming("broadcast")
+    @Outgoing("new-binaries-out")
+    public Record<String, String> sendNewBinaries(String payload) {
+		LOGGER.info("payload: {}", payload);
+		JsonNode as;
+		try {
+			as = new ObjectMapper().readTree(payload);
+		} catch (JsonProcessingException e) {
+			LOGGER.error("cannot parse activitystream", e);
+			return null;
+		}
+		LOGGER.info("JsonNode: {}", as.toPrettyString());
+		boolean typeMatch = StreamSupport.stream(((ArrayNode)as.at("/object/type")).spliterator(), false)
+				.map(JsonNode::asText)
+				.anyMatch(t -> { return LDP.NonRDFSource.getIRIString().equals(t); });
+		boolean activityMatch = StreamSupport.stream(((ArrayNode)as.at("/type")).spliterator(), false)
+				.map(JsonNode::asText)
+				.anyMatch(t -> { return "Create".equals(t) || "Update".equals(t); });
+		if(activityMatch && typeMatch) {
+			LOGGER.info("found activity type, sending new-binary: {}", as.get("object").get("id").asText());
+			return Record.of(as.get("object").get("id").asText(), payload);
+		}
+		return null;
     }
 }

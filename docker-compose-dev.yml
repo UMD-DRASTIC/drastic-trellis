@@ -1,0 +1,75 @@
+version: "3"
+services:
+#   trellis:
+#       - 80:8080
+
+  cassandra-1:
+    image: cassandra
+    environment:
+      CASSANDRA_BROADCAST_ADDRESS: localhost
+      CASSANDRA_LISTEN_ADDRESS: tasks.cassandra-1
+    ports:
+      - 9042:9042
+      - 7000
+    networks:
+      drastic:
+      
+  cassandra-init:
+    image: cassandra
+    depends_on:
+      - cassandra-1
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+    volumes:
+      - ./trellis.cql:/trellis.cql
+    command: cqlsh cassandra-1 -f /trellis.cql
+    networks:
+      - drastic
+
+  zookeeper:
+    image: zookeeper:3.4.9
+    hostname: zookeeper
+    ports:
+      - 2181:2181
+    networks:
+      drastic:
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    hostname: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - 9092:9092
+      - 9094:9094
+    networks:
+      drastic:
+    environment:
+      KAFKA_LISTENERS: INT://kafka:9092,EXT://0.0.0.0:9094
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INT:PLAINTEXT,EXT:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INT
+      KAFKA_ADVERTISED_LISTENERS: INT://kafka:9092,EXT://pop-os:9094
+      #KAFKA_ADVERTISED_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka:9092,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:19092
+      #KAFKA_LISTENERS: LISTENER_DOCKER_INTERNAL://kafka:9092,LISTENER_DOCKER_EXTERNAL://${DOCKER_HOST_IP:-127.0.0.1}:19092
+      #KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_DOCKER_INTERNAL:PLAINTEXT,LISTENER_DOCKER_EXTERNAL:PLAINTEXT
+      #KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_DOCKER_INTERNAL
+      #KAFKA_ADVERTISED_HOST_NAME: kafka
+      #KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_BROKER_ID: 1
+      KAFKA_CREATE_TOPICS: "test:1:1"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  kafkacat:
+    image: confluentinc/cp-kafkacat
+    command: sleep infinity
+    networks:
+      drastic:
+
+networks:
+  drastic:
+    driver: overlay

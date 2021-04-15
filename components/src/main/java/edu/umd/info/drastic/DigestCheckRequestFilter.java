@@ -55,7 +55,6 @@ public class DigestCheckRequestFilter implements ContainerRequestFilter {
         // Header format is as follows:
         // 	Digest: md5=HUXZLQLMuI/KZ5KDcJPcOA==
         // 	Digest: SHA=thvDyvhfIqlvFe+A9MYgxAfm1q5=,unixsum=30637   
-	LOGGER.debug("running OMGOMGOMG");
         // Get all the supplied digests that we implement
         Map<MessageDigest, String> digests = context.getHeaders().getOrDefault("Digest", emptyList()).stream()
         	.flatMap( digest -> { return Stream.of(digest.split(",")); })

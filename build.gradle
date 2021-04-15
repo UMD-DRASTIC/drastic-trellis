@@ -13,7 +13,8 @@ ext {
     commonsRdfVersion = "0.5.0"
     jdbiVersion = "3.10.1"
     mustacheVersion = "0.9.6"
-    trellisVersion = "0.17.0"
+    trellisVersion = "0.17.2"
+	websocketsVersion = "1.1"
 
     // Testing
     commonsTextVersion = "1.9"
@@ -28,9 +29,9 @@ ext {
     //    jjwtVersion = '0.11.2'
     //activationApiVersion = '1.2.2'
     //jaxbApiVersion = '2.3.3'
-    camelVersion = '3.7.1'
-    camelQuarkusVersion = '1.6.0'
-    camelLdpVersion = '0.2.1'
+    //camelVersion = '3.7.1'
+    //camelQuarkusVersion = '1.6.0'
+    //camelLdpVersion = '0.2.1'
     
     cassandraDropwizardMetricsVersion = '4.1.18'
 }

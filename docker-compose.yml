@@ -3,7 +3,7 @@ services:
   trellis:
     image: gregjan/drastic-trellis-cassandra:latest
     environment:
-      QUARKUS_LOG_CONSOLE_LEVEL: DEBUG
+      QUARKUS_LOG_LEVEL: INFO
       TRELLIS_CASSANDRA_CONTACT_ADDRESS: cassandra-1
       TRELLIS_CASSANDRA_CONTACT_PORT: 9042
       TRELLIS_CASSANDRA_METRICS_DIR: "/metrics/{{.Task.Name}}"

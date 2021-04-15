@@ -82,6 +82,7 @@ dependencies {
     implementation("org.apache.jena:jena-commonsrdf:$jenaVersion")
     implementation "org.slf4j:slf4j-api"
     implementation "org.yaml:snakeyaml"
+	implementation "javax.websocket:javax.websocket-api:$websocketsVersion"
 
 
     runtime "jakarta.activation:jakarta.activation-api"
