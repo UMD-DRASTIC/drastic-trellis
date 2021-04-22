@@ -9,8 +9,6 @@ import javax.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 import org.slf4j.Logger;
-import org.trellisldp.notification.jsonb.ActivityStreamMessage;
-import org.trellisldp.vocabulary.AS;
 import org.trellisldp.vocabulary.LDP;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -39,8 +37,6 @@ public class KafkaRouter {
 		return payload;
 	}
 	
-	// TODO figure out gradle dev runtime w/docker-compose.yml
-	
 	@Incoming("broadcast")
     @Outgoing("objects-out")
     public Record<String, String> sendActivityStream(String payload) {
@@ -66,16 +62,15 @@ public class KafkaRouter {
 			return null;
 		}
 		LOGGER.info("JsonNode: {}", as.toPrettyString());
-		boolean typeMatch = StreamSupport.stream(((ArrayNode)as.at("/object/type")).spliterator(), false)
-				.map(JsonNode::asText)
-				.anyMatch(t -> { return LDP.NonRDFSource.getIRIString().equals(t); });
-		boolean activityMatch = StreamSupport.stream(((ArrayNode)as.at("/type")).spliterator(), false)
-				.map(JsonNode::asText)
-				.anyMatch(t -> { return "Create".equals(t) || "Update".equals(t); });
-		if(activityMatch && typeMatch) {
-			LOGGER.info("found activity type, sending new-binary: {}", as.get("object").get("id").asText());
-			return Record.of(as.get("object").get("id").asText(), payload);
-		}
-		return null;
+		if(!StreamSupport.stream(((ArrayNode)as.at("/object/type")).spliterator(), false)
+			.map(JsonNode::asText)
+			.anyMatch(t -> { return LDP.NonRDFSource.getIRIString().equals(t); })) return null;
+		if(!StreamSupport.stream(((ArrayNode)as.at("/type")).spliterator(), false)
+			.map(JsonNode::asText)
+			.anyMatch(t -> { return "Create".equals(t) || "Update".equals(t); })) return null;
+		if(as.get("object").get("id").asText().contains("?")) return null;
+		
+		LOGGER.info("found activity type, sending new-binary: {}", as.get("object").get("id").asText());
+		return Record.of(as.get("object").get("id").asText(), payload);
     }
 }
