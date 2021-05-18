@@ -53,7 +53,6 @@ public class KafkaRouter {
 	@Incoming("broadcast")
     @Outgoing("new-binaries-out")
     public Record<String, String> sendNewBinaries(String payload) {
-		LOGGER.info("payload: {}", payload);
 		JsonNode as;
 		try {
 			as = new ObjectMapper().readTree(payload);
@@ -61,7 +60,6 @@ public class KafkaRouter {
 			LOGGER.error("cannot parse activitystream", e);
 			return null;
 		}
-		LOGGER.info("JsonNode: {}", as.toPrettyString());
 		if(!StreamSupport.stream(((ArrayNode)as.at("/object/type")).spliterator(), false)
 			.map(JsonNode::asText)
 			.anyMatch(t -> { return LDP.NonRDFSource.getIRIString().equals(t); })) return null;
@@ -69,8 +67,6 @@ public class KafkaRouter {
 			.map(JsonNode::asText)
 			.anyMatch(t -> { return "Create".equals(t) || "Update".equals(t); })) return null;
 		if(as.get("object").get("id").asText().contains("?")) return null;
-		
-		LOGGER.info("found activity type, sending new-binary: {}", as.get("object").get("id").asText());
 		return Record.of(as.get("object").get("id").asText(), payload);
     }
 }

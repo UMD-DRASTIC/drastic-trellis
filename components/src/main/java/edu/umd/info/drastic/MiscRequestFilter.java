@@ -42,7 +42,6 @@ public class MiscRequestFilter implements ContainerRequestFilter {
 
     @Override
     public void filter(final ContainerRequestContext req) throws IOException {
-	LOGGER.debug("running");
         if (nonNull(req.getMediaType())) {
             System.out.println("Content-Type: " + req.getMediaType());
         }

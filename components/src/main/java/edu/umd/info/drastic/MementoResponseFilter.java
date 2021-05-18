@@ -41,7 +41,6 @@ public class MementoResponseFilter implements ContainerResponseFilter {
     
     @Override
     public void filter(final ContainerRequestContext req, final ContainerResponseContext res) throws IOException {
-	LOGGER.debug("running");
         if (GET.equals(req.getMethod()) || HEAD.equals(req.getMethod())) {
             // Mementos
             if (nonNull(res.getHeaderString(MEMENTO_DATETIME))) {

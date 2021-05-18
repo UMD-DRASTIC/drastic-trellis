@@ -50,7 +50,6 @@ public class ACLRequestFilter implements ContainerRequestFilter {
 
     @Override
     public void filter(final ContainerRequestContext req) throws IOException {
-	LOGGER.debug("running");
         if (req.getHeaders().getOrDefault(LINK, emptyList()).stream().map(Link::valueOf).map(Link::getRel)
                 .anyMatch(isEqual("acl"))) {
             req.abortWith(status(CONFLICT).link(Trellis.UnsupportedInteractionModel.getIRIString(),

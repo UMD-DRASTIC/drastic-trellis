@@ -30,3 +30,7 @@ nb-configuration.xml
 # Gradle
 .gradle/
 build/
+
+# Data folders w/empty placeholders for Docker Dev Stack
+cassandra-data/**
+fuseki-data/**

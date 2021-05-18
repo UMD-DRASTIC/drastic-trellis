@@ -34,7 +34,6 @@ public class MiscResponseFilter implements ContainerResponseFilter {
 
     @Override
     public void filter(final ContainerRequestContext req, final ContainerResponseContext res) throws IOException {
-	LOGGER.debug("running");
         if (HEAD.equals(req.getMethod()) && SUCCESSFUL.equals(res.getStatusInfo().getFamily())) {
             res.getHeaders().add(VARY, "Accept-Encoding");
         }

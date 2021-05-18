@@ -11,9 +11,11 @@ services:
     ports:
       - 9042:9042
       - 7000
+    volumes:
+      - ./cassandra-data:/var/lib/cassandra
     networks:
       drastic:
-      
+
   cassandra-init:
     image: cassandra
     depends_on:
@@ -67,6 +69,16 @@ services:
   kafkacat:
     image: confluentinc/cp-kafkacat
     command: sleep infinity
+    networks:
+      drastic:
+
+  fuseki:
+    image: fuseki:latest
+    command: [ "--tdb2", "--update", "--loc", "databases/DB2", "/ds" ]
+    ports:
+      - 3030:3030
+    volumes:
+      - ./fuseki-data:/fuseki/databases
     networks:
       drastic:
 

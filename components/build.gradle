@@ -1,5 +1,6 @@
 plugins {
     id 'io.quarkus' version "$quarkusVersion"
+    id 'eclipse'
 }
 
 def static randomPort() {
@@ -27,6 +28,7 @@ dependencies {
     implementation 'io.quarkus:quarkus-jsonb'
     implementation 'io.quarkus:quarkus-resteasy'
     implementation 'io.quarkus:quarkus-security'
+    implementation("io.quarkus:quarkus-undertow-websockets:$quarkusVersion")
     implementation 'io.quarkus:quarkus-smallrye-health'
     implementation 'io.quarkus:quarkus-smallrye-jwt'
     implementation 'io.quarkus:quarkus-smallrye-reactive-messaging'
@@ -83,6 +85,8 @@ dependencies {
     implementation "org.slf4j:slf4j-api"
     implementation "org.yaml:snakeyaml"
 	implementation "javax.websocket:javax.websocket-api:$websocketsVersion"
+	implementation "org.apache.poi:poi:5.0.0"
+	implementation "org.apache.poi:poi-ooxml:5.0.0"
 
 
     runtime "jakarta.activation:jakarta.activation-api"
@@ -114,3 +118,6 @@ test {
     systemProperty 'trellis.file.binary-path', "$buildDir/data/binaries"
     systemProperty 'mp.jwt.verify.publickey.location', 'https://www.trellisldp.org/tests/jwks.json'
 }
+
+eclipse.classpath.downloadJavadoc = true
+eclipse.classpath.downloadSources = false
