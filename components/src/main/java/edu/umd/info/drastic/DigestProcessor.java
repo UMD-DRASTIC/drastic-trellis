@@ -3,7 +3,6 @@ package edu.umd.info.drastic;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
@@ -13,6 +12,8 @@ import java.security.DigestInputStream;
 import java.security.MessageDigest;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.core.HttpHeaders;
@@ -43,6 +44,8 @@ public class DigestProcessor {
 	private static final Logger LOGGER = getLogger(DigestProcessor.class);
 	
 	private final RDF rdf = RDFFactory.getInstance();
+
+	private ExecutorService executorService = Executors.newFixedThreadPool(1);
 	
 	@Incoming("fixity")
     public void process(Record<String, String> record) {
@@ -56,8 +59,13 @@ public class DigestProcessor {
 		}
 		HttpClient http = HttpClient.newHttpClient();
 		HttpRequest req = HttpRequest.newBuilder(binaryLoc).GET().build();
-		CompletableFuture<HttpResponse<InputStream>> response = http.sendAsync(req, HttpResponse.BodyHandlers.ofInputStream());
-		response.thenAccept(res -> {
+		CompletableFuture.supplyAsync(() -> {
+			try {
+				return http.send(req, HttpResponse.BodyHandlers.ofInputStream());
+			} catch (IOException | InterruptedException e) {
+				throw new Error(e);
+			}
+		}, executorService).thenAccept(res -> {
 			List<String> links = res.headers().allValues(HttpHeaders.LINK);
 			final URI descriptionLoc = links.stream().map(Link::valueOf).filter(link -> "describedby".equals(link.getRel())).peek(System.out::println)
 					.map(Link::getUri).findFirst().orElse(null);
@@ -102,13 +110,16 @@ public class DigestProcessor {
         
         String patch = "INSERT { "+ g.toString() +" } WHERE {}";
 		HttpClient http = HttpClient.newHttpClient();
-		CompletableFuture<HttpResponse<Void>> response = http.sendAsync(HttpRequest.newBuilder(descriptionLoc).method("PATCH", HttpRequest.BodyPublishers.ofString(patch))
-				.header("Content-type", "application/sparql-update").build(), HttpResponse.BodyHandlers.discarding());
-		response.thenAccept(res -> {
-			if(res.statusCode() != 204) {
-				LOGGER.error("Got a failure when patching binary description: {}", res.statusCode());
-			}
-		});
+		HttpResponse<Void> response;
+		try {
+			response = http.send(HttpRequest.newBuilder(descriptionLoc).method("PATCH", HttpRequest.BodyPublishers.ofString(patch))
+					.header("Content-type", "application/sparql-update").build(), HttpResponse.BodyHandlers.discarding());
+		} catch (IOException | InterruptedException e) {
+			throw new Error(e);
+		}
+		if(response.statusCode() != 204) {
+			LOGGER.error("Got a failure when patching binary description: {}", response.statusCode());
+		}
     }
 	
 }

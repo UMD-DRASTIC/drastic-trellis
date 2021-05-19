@@ -5,8 +5,11 @@ import static org.slf4j.LoggerFactory.getLogger;
 import java.io.IOException;
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -37,9 +40,10 @@ public class ResourceWebsocketNotifier {
 	
 	@Inject @Channel("makePagedDocuments") Emitter<String> emitter;
 
+	private ExecutorService executorService = Executors.newFixedThreadPool(4);
+
 	@OnMessage
 	public void onMessage(String msg, Session s) throws IOException {
-		//LOGGER.debug("websocket client msg: {}", msg.toString());
 		JsonNode as;
 		try {
 			as = new ObjectMapper().readTree(msg);
@@ -76,22 +80,17 @@ public class ResourceWebsocketNotifier {
 	
 	@Incoming("websocket")
     public void process(Record<String, String> record) {
-		Queue<Session> sessions = subscribers.get(record.key());
-		if (sessions != null) {
-			Thread newThread = new Thread(() -> {
+		sendWebsocketUpdates(record.key(), record.value());
+	}
+	
+	private CompletableFuture<Void> sendWebsocketUpdates(String key, String value) {
+		return CompletableFuture.supplyAsync(() -> subscribers.get(key), executorService).thenAccept((sessions) -> {
+				if(sessions == null) return;
 				for(Session s : sessions) {
 			    	if(s.isOpen()) {
-			    		try {
-			    		    s.getBasicRemote().sendText(record.value());
-			    		} catch (IOException e) {
-			    		    e.printStackTrace();
-			    		}
+			    		s.getAsyncRemote().sendText(value);
 			    	}
 			    }
 			});
-			newThread.start();
-		} else {
-			LOGGER.debug("no websocket sessions subscribed to: {}", record.key());
-		}
 	}
 }

@@ -50,7 +50,7 @@ public class HAManifestProcessor {
 	
 	private final RDF rdf = RDFFactory.getInstance();
 	
-	private ExecutorService executorService = Executors.newCachedThreadPool();
+	private ExecutorService executorService = Executors.newFixedThreadPool(1);
 	
 	@Incoming("manifest")
     public void process(Record<String, String> record) {

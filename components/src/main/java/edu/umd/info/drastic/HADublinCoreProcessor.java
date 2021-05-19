@@ -20,6 +20,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.enterprise.context.ApplicationScoped;
 
@@ -47,6 +49,8 @@ public class HADublinCoreProcessor {
 
 	public static final Set<String> dcElements = new HashSet<String>(Arrays.asList(
 			"identifier", "title", "creator", "subject", "description", "date", "rights"));
+
+	private ExecutorService executorService = Executors.newFixedThreadPool(1);
 	
 	@Incoming("dce")
     public void process(Record<String, String> record) {
@@ -55,7 +59,7 @@ public class HADublinCoreProcessor {
 			URI binaryLoc;
 			try {
 				binaryLoc = new URI(record.key());
-				CompletableFuture.runAsync(() -> processDCFile(binaryLoc));
+				CompletableFuture.runAsync(() -> processDCFile(binaryLoc), executorService);
 			} catch (URISyntaxException e2) {
 				throw new Error("Unexpected error", e2);
 			}			
@@ -78,7 +82,7 @@ public class HADublinCoreProcessor {
 		try(Workbook workbook = WorkbookFactory.create(sheetFile)) {
 			Sheet sheet = workbook.getSheetAt(0);
 			
-			URL base = new URL(binaryLoc.toURL(), "/description/");
+			URL base = NPSFilenameUtil.getSubmissionUrl(binaryLoc.toURL());
 			try(PrintWriter pw = new PrintWriter(extractedFile)) {
 				writeRDF(pw, sheet, base);
 			}
@@ -100,7 +104,7 @@ public class HADublinCoreProcessor {
 		}
 	}
 	
-	private void writeRDF(Writer out, Sheet sheet, URL descrBase) throws IOException {
+	private void writeRDF(Writer out, Sheet sheet, URL base) throws IOException {
 		out.write("@prefix dce: <http://purl.org/dc/elements/1.1/> .\n");
 		out.write("@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .\n\n");
 		boolean columnsIdentified = false;
@@ -133,12 +137,12 @@ public class HADublinCoreProcessor {
 						dce.put(columns2dc.get(key), c.getStringCellValue());
 					}
 				}
-				String uri = NPSFilenameUtil.getDocumentPath(dce.get("identifier"));
 				URI doc;
 				try {
-					doc = new URL(descrBase, uri).toURI();
-				} catch (Exception e) {
-					throw new Error("Unexpected document url problem", e);
+					doc = new URI(base.toExternalForm()+"/"+dce.get("identifier"));
+				} catch (URISyntaxException e1) {
+					LOGGER.error("Unexpected", e1);
+					throw new Error(e1);
 				}
 				out.write("<" + doc.toASCIIString() + "> ");
 				Optional<String> statements = dce.entrySet().stream().map((e) -> {

@@ -14,6 +14,7 @@ import static edu.umd.info.drastic.NPSVocabulary.PCDM_hasMember;
 import static edu.umd.info.drastic.NPSVocabulary.RDF_type;
 import static org.slf4j.LoggerFactory.getLogger;
 
+import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
@@ -23,12 +24,15 @@ import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
+import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -59,10 +63,12 @@ public class MakePagedDocumentsTask {
     
     private final RDF rdf = RDFFactory.getInstance();
 
+	private ExecutorService executorService = Executors.newFixedThreadPool(1);
+
 	@Incoming("makePagedDocuments")
 	public void makePagedDocuments(final String submissionUri) {
 		
-		getPageFiles(submissionUri).thenAccept(lists -> {
+		CompletableFuture.supplyAsync(() -> getPageFiles(submissionUri), executorService).thenAccept(lists -> {
 			String lastDocId = null;
 			int lastPageNo = 1;
 			List<String> pageFiles = lists.get("pageFiles");
@@ -123,6 +129,7 @@ public class MakePagedDocumentsTask {
         	g.add(page, RDF_type, PCDM_Object);
         	g.add(page, PCDM_hasFile, pageFile);
         	String accessFileUrl = NPSFilenameUtil.getAccessImageURL(pageFile.getIRIString());
+        	LOGGER.debug("access file url: {}", accessFileUrl);
         	if(pageAccessFiles.contains(accessFileUrl)) {
         		g.add(page, PCDM_hasFile, rdf.createIRI(accessFileUrl));
         	}
@@ -159,7 +166,7 @@ public class MakePagedDocumentsTask {
         }
 	}
 
-	private CompletableFuture<Map<String, List<String>>> getPageFiles(String submissionUri) {
+	private Map<String, List<String>> getPageFiles(String submissionUri) {
 		String q = "select ?o FROM <"+ NPS_containsGraph.getIRIString() +"> WHERE { <"+submissionUri
 				+"> <http://www.w3.org/ns/ldp#contains>*/<http://www.w3.org/ns/ldp#contains> ?o. }";
 		HttpClient http = HttpClient.newHttpClient();
@@ -167,29 +174,34 @@ public class MakePagedDocumentsTask {
 		        .header("Content-Type", "application/x-www-form-urlencoded; charset=utf-8")
 		        .header("Accept", "application/json")
 		        .build();
-		return http.sendAsync(req, BodyHandlers.ofString()).thenApply(res -> {
-			JsonNode as;
-			try {
-				as = new ObjectMapper().readTree(res.body());
-			} catch (JsonProcessingException e) {
-				LOGGER.error("cannot parse activitystream", e);
-				return null;
-			}
-			List<String> pageFiles = StreamSupport.stream(((ArrayNode)as.get("results").get("bindings")).spliterator(), false)
+		HttpResponse<String> res;
+		try {
+			res = http.send(req, BodyHandlers.ofString());
+		} catch (IOException | InterruptedException e1) {
+			LOGGER.error("Cannot fetch submission contents", e1);
+			throw new Error(e1);
+		}
+		JsonNode as;
+		try {
+			as = new ObjectMapper().readTree(res.body());
+		} catch (JsonProcessingException e) {
+			LOGGER.error("cannot parse activitystream", e);
+			return null;
+		}
+		List<String> pageFiles = StreamSupport.stream(((ArrayNode)as.get("results").get("bindings")).spliterator(), false)
+			.map(n -> { return n.get("o").get("value").asText(); })
+			.filter(NPSFilenameUtil.PAGE_FILE_PREDICATE)
+			.sorted()
+			.collect(Collectors.toList());
+		List<String> pageAccessFiles = StreamSupport.stream(((ArrayNode)as.get("results").get("bindings")).spliterator(), false)
 				.map(n -> { return n.get("o").get("value").asText(); })
-				.filter(NPSFilenameUtil.PAGE_FILE_PREDICATE)
+				.filter(NPSFilenameUtil.PAGE_ACCESS_FILE_PREDICATE)
 				.sorted()
 				.collect(Collectors.toList());
-			List<String> pageAccessFiles = StreamSupport.stream(((ArrayNode)as.get("results").get("bindings")).spliterator(), false)
-					.map(n -> { return n.get("o").get("value").asText(); })
-					.filter(NPSFilenameUtil.PAGE_ACCESS_FILE_PREDICATE)
-					.sorted()
-					.collect(Collectors.toList());
-			Map<String, List<String>> result = new HashMap<String, List<String>>();
-			result.put("pageFiles", pageFiles);
-			result.put("pageAccessFiles", pageAccessFiles);
-			return result;
-		});
+		Map<String, List<String>> result = new HashMap<String, List<String>>();
+		result.put("pageFiles", pageFiles);
+		result.put("pageAccessFiles", pageAccessFiles);
+		return result;
 	}
 	
 	public static String encode(final String input, final String encoding) {

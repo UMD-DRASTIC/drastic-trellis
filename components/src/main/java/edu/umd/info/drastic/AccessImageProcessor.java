@@ -37,8 +37,8 @@ public class AccessImageProcessor {
 	private static final Logger LOGGER = getLogger(AccessImageProcessor.class);
 	
 	public static final int MAX_THUMBNAIL_DIM = 256;
-	
-	private ExecutorService executorService = Executors.newCachedThreadPool();
+
+	private ExecutorService executorService = Executors.newFixedThreadPool(5);
 
 	@Incoming("accessimage")
 	public void process(Record<String, String> record) {

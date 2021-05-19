@@ -2,6 +2,8 @@ package edu.umd.info.drastic;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -19,7 +21,7 @@ public class NPSFilenameUtil {
 	private static Pattern md5Sheets = Pattern.compile(".*_MD5\\.xlsx$");
 	private static Pattern dcSheets = Pattern.compile("(.*/)?(.*)inventory\\.xlsx$");
 	private static Pattern pageFile = Pattern.compile("(.*/)?(.*_P\\d\\d\\d)\\.tif{1,2}$");
-	private static Pattern pageAccessFile = Pattern.compile("(.*/)?(.*_P\\d\\d\\d)_ACCESS\\.jpg$");
+	private static Pattern pageAccessFile = Pattern.compile("(.*/)?(.*_P\\d\\d\\d)_ACCESS\\.png$");
 	private static Pattern pageFileDocId = Pattern.compile("(.*/)?(.*_D\\d\\d)_P\\d\\d\\d\\.tif{1,2}$");
 	
 	public static Predicate<String> PAGE_FILE_PREDICATE = pageFile.asMatchPredicate();
@@ -122,5 +124,10 @@ public class NPSFilenameUtil {
 	public static void getFolderID(String docId) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public static URL getSubmissionUrl(URL binaryLoc) throws MalformedURLException {
+		String[] segs = binaryLoc.getPath().split("/");
+		return new URL(binaryLoc, "/"+String.join("/", new String[] { segs[1] , segs[2]} ));
 	}
 }
