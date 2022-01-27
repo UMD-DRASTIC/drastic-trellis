@@ -1,16 +1,22 @@
-version: "3"
+version: "3.2"
 services:
 #   trellis:
 #       - 80:8080
 
   cassandra-1:
-    image: cassandra
+    image: cassandra:3.11.11
     environment:
       CASSANDRA_BROADCAST_ADDRESS: localhost
       CASSANDRA_LISTEN_ADDRESS: tasks.cassandra-1
     ports:
-      - 9042:9042
-      - 7000
+      - target: 9042
+        published: 9042
+        protocol: tcp
+        mode: host
+      - target: 7000
+        published: 7000
+        protocol: tcp
+        mode: host
     volumes:
       - ./cassandra-data:/var/lib/cassandra
     networks:
@@ -44,8 +50,14 @@ services:
     depends_on:
       - zookeeper
     ports:
-      - 9092:9092
-      - 9094:9094
+      - target: 9092
+        published: 9092
+        protocol: tcp
+        mode: host
+      - target: 9094
+        published: 9094
+        protocol: tcp
+        mode: host
     networks:
       drastic:
     environment:
@@ -73,10 +85,13 @@ services:
       drastic:
 
   fuseki:
-    image: fuseki:latest
+    image: gregjan/fuseki:latest
     command: [ "--tdb2", "--update", "--loc", "databases/DB2", "/ds" ]
     ports:
-      - 3030:3030
+      - target: 3030
+        published: 3030
+        protocol: tcp
+        mode: host
     volumes:
       - ./fuseki-data:/fuseki/databases
     networks:
