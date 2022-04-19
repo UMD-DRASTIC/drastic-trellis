@@ -77,7 +77,7 @@ public class NPSFilenameUtil {
 		if(m.find()) {
 			return m.group(2)+"inventory_EXTRACTED.ttl";
 		} else {
-			throw new Error("Cannot find pattern.");
+			throw new IllegalArgumentException("Cannot find pattern.");
 		}
 	}
 	
@@ -86,7 +86,7 @@ public class NPSFilenameUtil {
 		if(m.find()) {
 			return m.group(1) + m.group(2)+"_ACCESS.png";
 		} else {
-			throw new Error("Cannot find pattern.");
+			throw new IllegalArgumentException("Cannot find pattern.");
 		}
 	}
 
@@ -103,7 +103,7 @@ public class NPSFilenameUtil {
 		if(m.find()) {
 			return m.group(2);
 		} else {
-			throw new Error("unexpected");
+			throw new IllegalArgumentException("unexpected");
 		}
 	}
 
@@ -117,7 +117,7 @@ public class NPSFilenameUtil {
 		if(m.find()) {
 			return m.group(1) + m.group(2)+"_THUMBNAIL.png";
 		} else {
-			throw new Error("Cannot find pattern.");
+			throw new IllegalArgumentException("Cannot find pattern.");
 		}
 	}
 

@@ -1,5 +1,6 @@
 package edu.umd.info.drastic;
 
+import static edu.umd.info.drastic.LDPHttpUtil.localhost;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import java.awt.geom.AffineTransform;
@@ -7,8 +8,8 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
-import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -35,34 +36,36 @@ import io.smallrye.reactive.messaging.kafka.Record;
 public class AccessImageProcessor {
 
 	private static final Logger LOGGER = getLogger(AccessImageProcessor.class);
-	
+
 	public static final int MAX_THUMBNAIL_DIM = 256;
 
 	private ExecutorService executorService = Executors.newFixedThreadPool(5);
 
 	@Incoming("accessimage")
 	public void process(Record<String, String> record) {
-		if (NPSFilenameUtil.isHierarchalConvention(record.key()) && record.key().endsWith(".tif")) {
-			LOGGER.debug("Got a new image file for conversion: {}", record.key());
+		LOGGER.debug("access image task: {}", record.key());
+		if (/* NPSFilenameUtil.isHierarchalConvention(record.key()) && */  record.key().endsWith(".tif")) {
 			CompletableFuture.runAsync(() -> {
 				processImageFile(record.key());
 			}, executorService);
 		}
 	}
 
-	private void processImageFile(String binaryLoc) {
+	private void processImageFile(String binaryURIStr) {
 		HttpClient http = HttpClient.newHttpClient();
 		File accessImg = null;
 		File thumbnailImg = null;
 		try {
-			BufferedImage image = ImageIO.read(new URL(binaryLoc));
+			URI binaryURI = localhost(binaryURIStr);
+			HttpResponse<InputStream> res = http.send(HttpRequest.newBuilder().uri(binaryURI).build(), BodyHandlers.ofInputStream());
+			BufferedImage image = ImageIO.read(res.body());
 			accessImg = File.createTempFile("foo", ".png");
 			thumbnailImg = File.createTempFile("foo", ".png");
 			ImageIO.write(image, "PNG", accessImg);
-			URI accessLoc = new URL(NPSFilenameUtil.getAccessImageURL(binaryLoc)).toURI();
+			String accessLoc = NPSFilenameUtil.getAccessImageURL(binaryURIStr);
 			HttpRequest.BodyPublisher publisher = HttpRequest.BodyPublishers.ofFile(accessImg.toPath());
 			try {
-				HttpResponse<Void> hres = http.send(HttpRequest.newBuilder(accessLoc).method("PUT", publisher)
+				HttpResponse<Void> hres = http.send(HttpRequest.newBuilder(localhost(accessLoc)).method("PUT", publisher)
 					.header("Link", "<"+NPSVocabulary.LDP_NonRDFSource.getIRIString()+">; rel=\"type\"")
 					.header("Content-Type", "image/png").build(), BodyHandlers.discarding());
 				if (hres.statusCode() != 201) {
@@ -72,7 +75,7 @@ public class AccessImageProcessor {
 			} catch(IOException ignored) {}
 			BufferedImage thumb = getThumbnailImage(image);
 			ImageIO.write(thumb, "PNG", thumbnailImg);
-			URI thumbnailLoc = new URL(NPSFilenameUtil.getThumbnailImageURL(binaryLoc)).toURI();
+			URI thumbnailLoc = localhost(NPSFilenameUtil.getThumbnailImageURL(binaryURIStr));
 			HttpRequest.BodyPublisher pubThumb = HttpRequest.BodyPublishers.ofFile(thumbnailImg.toPath());
 			try {
 				http.send(HttpRequest.newBuilder(thumbnailLoc).method("PUT", pubThumb)
@@ -80,8 +83,8 @@ public class AccessImageProcessor {
 					.header("Content-Type", "image/png").build(), BodyHandlers.discarding());
 			} catch(IOException ignored) {}
 		} catch (/*IOException | URISyntaxException | InterruptedException |*/ Exception e) {
-			LOGGER.debug("Unexpected problem", e);
-			throw new Error(e);
+			LOGGER.error("Unexpected problem", e);
+			return;
 		} finally {
 			if(accessImg != null && accessImg.exists()) {
 				accessImg.delete();

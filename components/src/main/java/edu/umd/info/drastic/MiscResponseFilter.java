@@ -29,7 +29,8 @@ import org.slf4j.Logger;
 
 @Provider
 public class MiscResponseFilter implements ContainerResponseFilter {
-
+    
+	@SuppressWarnings("unused")
     private static final Logger LOGGER = getLogger(MiscRequestFilter.class);
 
     @Override

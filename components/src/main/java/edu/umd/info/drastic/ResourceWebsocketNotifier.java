@@ -44,6 +44,7 @@ public class ResourceWebsocketNotifier {
 
 	@OnMessage
 	public void onMessage(String msg, Session s) throws IOException {
+		LOGGER.debug("websocket msg: {}", msg);
 		JsonNode as;
 		try {
 			as = new ObjectMapper().readTree(msg);

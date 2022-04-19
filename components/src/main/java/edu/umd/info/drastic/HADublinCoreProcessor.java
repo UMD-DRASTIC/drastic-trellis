@@ -1,5 +1,6 @@
 package edu.umd.info.drastic;
 
+import static edu.umd.info.drastic.LDPHttpUtil.localhost;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import java.io.File;
@@ -51,45 +52,46 @@ public class HADublinCoreProcessor {
 			"identifier", "title", "creator", "subject", "description", "date", "rights"));
 
 	private ExecutorService executorService = Executors.newFixedThreadPool(1);
-	
+
 	@Incoming("dce")
     public void process(Record<String, String> record) {
 		if(NPSFilenameUtil.isDCSheet(record.key())) {
-			LOGGER.debug("Got a new DC manifest: {}", record.key());
+			LOGGER.debug("Dublin Core spreadsheet task: {}", record.key());
 			URI binaryLoc;
 			try {
 				binaryLoc = new URI(record.key());
 				CompletableFuture.runAsync(() -> processDCFile(binaryLoc), executorService);
 			} catch (URISyntaxException e2) {
-				throw new Error("Unexpected error", e2);
-			}			
+				LOGGER.error("Got a failure when processing dublin core spreadsheet", e2);
+			}
 		}
-	}	
-	
+	}
+
 	private void processDCFile(URI binaryLoc) {
-		HttpClient http = HttpClient.newHttpClient();
-		HttpRequest req = HttpRequest.newBuilder(binaryLoc).GET().build();
 		File sheetFile;
 		File extractedFile;
 		try {
+			HttpClient http = HttpClient.newHttpClient();
+			HttpRequest req = HttpRequest.newBuilder(localhost(binaryLoc)).GET().build();
 			sheetFile = File.createTempFile("tmp", ".xlsx");
 			extractedFile = File.createTempFile("tmp", ".ttl");
 			http.send(req, HttpResponse.BodyHandlers.ofFile(sheetFile.toPath()));
-		} catch (IOException | InterruptedException e1) {
+		} catch (IOException | InterruptedException | URISyntaxException e1) {
 			LOGGER.error("Cannot download temp xslx file", e1);
-			throw new Error(e1);
+			return;
 		}
 		try(Workbook workbook = WorkbookFactory.create(sheetFile)) {
 			Sheet sheet = workbook.getSheetAt(0);
-			
+
 			URL base = NPSFilenameUtil.getSubmissionUrl(binaryLoc.toURL());
 			try(PrintWriter pw = new PrintWriter(extractedFile)) {
 				writeRDF(pw, sheet, base);
 			}
-			
+
 			URI extractedLoc = new URL(binaryLoc.toURL(), "./"+NPSFilenameUtil.getExtractedDCFilename(binaryLoc.toASCIIString())).toURI();
 			HttpRequest.BodyPublisher publisher = HttpRequest.BodyPublishers.ofFile(extractedFile.toPath());
-			HttpResponse<Void> hres = http.send(HttpRequest.newBuilder(extractedLoc)
+			HttpClient http = HttpClient.newHttpClient();
+			HttpResponse<Void> hres = http.send(HttpRequest.newBuilder(localhost(extractedLoc))
 					.method("PUT", publisher)
 					.header("Link", "<http://www.w3.org/ns/ldp#RDFSource>; rel=\"type\"")
 					.header("Content-Type", "text/turtle")
@@ -100,10 +102,10 @@ public class HADublinCoreProcessor {
 			}
 		} catch (Exception e) {
 			LOGGER.debug("problem", e);
-			throw new Error(e);
+			return;
 		}
 	}
-	
+
 	private void writeRDF(Writer out, Sheet sheet, URL base) throws IOException {
 		out.write("@prefix dce: <http://purl.org/dc/elements/1.1/> .\n");
 		out.write("@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .\n\n");
@@ -142,11 +144,11 @@ public class HADublinCoreProcessor {
 					doc = new URI(base.toExternalForm()+"/"+dce.get("identifier"));
 				} catch (URISyntaxException e1) {
 					LOGGER.error("Unexpected", e1);
-					throw new Error(e1);
+					return;
 				}
 				out.write("<" + doc.toASCIIString() + "> ");
 				Optional<String> statements = dce.entrySet().stream().map((e) -> {
-					String val = e.getKey().equals("date") ? "\""+e.getValue()+"\"^^xsd:date" : "\""+e.getValue().replace("\"", "\\\"")+"\"";            
+					String val = e.getKey().equals("date") ? "\""+e.getValue()+"\"^^xsd:date" : "\""+e.getValue().replace("\"", "\\\"")+"\"";
 					return "dce:"+e.getKey()+" "+val;
 				}).reduce((a, b) -> { return a+";\n\t"+b; });
 				if(statements.isPresent()) {
@@ -155,5 +157,5 @@ public class HADublinCoreProcessor {
 				}
 			}
 		}
-	}	
+	}
 }

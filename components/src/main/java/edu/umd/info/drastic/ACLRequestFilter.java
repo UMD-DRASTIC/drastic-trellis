@@ -37,6 +37,7 @@ import org.trellisldp.vocabulary.Trellis;
 @Priority(USER)
 public class ACLRequestFilter implements ContainerRequestFilter {
 
+    @SuppressWarnings("unused")
     private static final Logger LOGGER = getLogger(ACLRequestFilter.class);
     
     /**

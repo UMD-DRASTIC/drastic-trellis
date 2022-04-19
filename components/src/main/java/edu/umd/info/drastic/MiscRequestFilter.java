@@ -37,7 +37,8 @@ import org.trellisldp.vocabulary.LDP;
 public class MiscRequestFilter implements ContainerRequestFilter {
 
     private static final String EXC_URI = "http://fedora.info/definitions/fcrepo#ExternalContent";
-    
+
+    @SuppressWarnings("unused")
     private static final Logger LOGGER = getLogger(MiscRequestFilter.class);
 
     @Override

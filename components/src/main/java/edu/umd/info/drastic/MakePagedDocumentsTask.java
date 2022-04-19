@@ -13,6 +13,7 @@ import static edu.umd.info.drastic.NPSVocabulary.PCDM_hasFile;
 import static edu.umd.info.drastic.NPSVocabulary.PCDM_hasMember;
 import static edu.umd.info.drastic.NPSVocabulary.RDF_type;
 import static org.slf4j.LoggerFactory.getLogger;
+import static edu.umd.info.drastic.LDPHttpUtil.localhost;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -56,18 +57,18 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 
 public class MakePagedDocumentsTask {
 	private static final Logger LOGGER = getLogger(MakePagedDocumentsTask.class);
-	
+
     @Inject
-    @ConfigProperty(name = "trellis.triplestore-url", defaultValue = "http://localhost:3030/ds/query")
+    @ConfigProperty(name = "trellis.triplestore-query-url", defaultValue = "http://localhost:3030/ds/query")
     URI triplestoreQueryUrl;
-    
+
     private final RDF rdf = RDFFactory.getInstance();
 
 	private ExecutorService executorService = Executors.newFixedThreadPool(1);
 
 	@Incoming("makePagedDocuments")
 	public void makePagedDocuments(final String submissionUri) {
-		
+		LOGGER.debug("make paged docs task: {}", submissionUri);
 		CompletableFuture.supplyAsync(() -> getPageFiles(submissionUri), executorService).thenAccept(lists -> {
 			String lastDocId = null;
 			int lastPageNo = 1;
@@ -99,7 +100,7 @@ public class MakePagedDocumentsTask {
 			}
 		});
 	}
-	
+
 	private void makeDoc(String submissionUri, String docId, Map<String, List<String>> mixedPageFiles) {
 		List<String> pageFiles = mixedPageFiles.get("pageFiles");
 		List<String> pageAccessFiles = mixedPageFiles.get("pageAccessFiles");
@@ -112,8 +113,8 @@ public class MakePagedDocumentsTask {
 		try {
 			folder = new URL(new URL(doc.getIRIString()), "/description/"+folderPath);
 		} catch (MalformedURLException e1) {
-			LOGGER.debug("Unexpected", e1);
-			throw new Error("Unexpected", e1);
+			LOGGER.error("Failed to build folder description url", e1);
+			return;
 		}
         g.add(rdf.createIRI(folder.toExternalForm()), PCDM_hasMember, doc);
         List<BlankNode> proxyOrder = new ArrayList<BlankNode>();
@@ -153,16 +154,17 @@ public class MakePagedDocumentsTask {
         		g.add(proxyOrder.get(i), IANA_next, proxyOrder.get(i+1));
         	} catch(IndexOutOfBoundsException ignored) {}
         }
-        String body = g.toString(); 
-        HttpClient http = HttpClient.newHttpClient();
+        String body = g.toString();
+		HttpClient http = HttpClient.newHttpClient();
         try {
-        	http.send(HttpRequest.newBuilder(new URI(doc.getIRIString()))
+        	http.send(HttpRequest.newBuilder(localhost(doc.getIRIString()))
 				.method("PUT", BodyPublishers.ofString(body))
 				.header("Link", "<http://www.w3.org/ns/ldp#RDFSource>; rel=\"type\"")
 				.header("Content-Type", "text/turtle")
 				.build(), BodyHandlers.discarding());
         } catch(Exception e) {
-        	throw new Error("unexpected", e);
+					LOGGER.error("Failed to put turtle for paged document", e);
+        	return;
         }
 	}
 
@@ -170,8 +172,8 @@ public class MakePagedDocumentsTask {
 		String q = "select ?o FROM <"+ NPS_containsGraph.getIRIString() +"> WHERE { <"+submissionUri
 				+"> <http://www.w3.org/ns/ldp#contains>*/<http://www.w3.org/ns/ldp#contains> ?o. }";
 		HttpClient http = HttpClient.newHttpClient();
-		HttpRequest req = HttpRequest.newBuilder(triplestoreQueryUrl).method("POST", BodyPublishers.ofString(sparqlQuery(q)))
-		        .header("Content-Type", "application/x-www-form-urlencoded; charset=utf-8")
+		HttpRequest req = HttpRequest.newBuilder(triplestoreQueryUrl).method("POST", BodyPublishers.ofString(q))
+		        .header("Content-Type", "application/sparql-query; charset=utf-8")
 		        .header("Accept", "application/json")
 		        .build();
 		HttpResponse<String> res;
@@ -179,7 +181,7 @@ public class MakePagedDocumentsTask {
 			res = http.send(req, BodyHandlers.ofString());
 		} catch (IOException | InterruptedException e1) {
 			LOGGER.error("Cannot fetch submission contents", e1);
-			throw new Error(e1);
+			return null;
 		}
 		JsonNode as;
 		try {
@@ -203,19 +205,19 @@ public class MakePagedDocumentsTask {
 		result.put("pageAccessFiles", pageAccessFiles);
 		return result;
 	}
-	
-	public static String encode(final String input, final String encoding) {
-        if (input != null) {
-            try {
-                return URLEncoder.encode(input, encoding);
-            } catch (final UnsupportedEncodingException ex) {
-                throw new UncheckedIOException("Invalid encoding: " + encoding, ex);
-            }
-        }
-        return "";
-    }
-	
-    public static String sparqlQuery(final String command) {
-    	return "query=" + encode(command, "UTF-8");
-    }
+
+//	public static String encode(final String input, final String encoding) {
+//        if (input != null) {
+//            try {
+//                return URLEncoder.encode(input, encoding);
+//            } catch (final UnsupportedEncodingException ex) {
+//                throw new UncheckedIOException("Invalid encoding: " + encoding, ex);
+//            }
+//        }
+//        return "";
+//    }
+
+//    public static String sparqlQuery(final String command) {
+//    	return "query=" + encode(command, "UTF-8");
+//    }
 }

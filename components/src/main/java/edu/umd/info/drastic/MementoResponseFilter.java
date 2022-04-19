@@ -37,7 +37,8 @@ import org.trellisldp.vocabulary.Memento;
 @Provider
 public class MementoResponseFilter implements ContainerResponseFilter {
 
-    private static final Logger LOGGER = getLogger(MementoResponseFilter.class);
+    @SuppressWarnings("unused")
+	private static final Logger LOGGER = getLogger(MementoResponseFilter.class);
     
     @Override
     public void filter(final ContainerRequestContext req, final ContainerResponseContext res) throws IOException {

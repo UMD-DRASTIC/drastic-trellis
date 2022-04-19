@@ -1,5 +1,6 @@
 package edu.umd.info.drastic;
 
+import static edu.umd.info.drastic.LDPHttpUtil.localhost;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.StreamSupport;
@@ -43,14 +45,15 @@ public class TripleStoreRouter {
 	private static final Logger LOGGER = getLogger(TripleStoreRouter.class);
 	
     @Inject
-    @ConfigProperty(name = "trellis.triplestore-url", defaultValue = "http://localhost:3030/ds/update")
-    URI triplestoreUrl;
+    @ConfigProperty(name = "trellis.triplestore-update-url", defaultValue = "http://localhost:3030/ds/update")
+    URI triplestoreUpdateUrl;
     
-	private ExecutorService executorService = Executors.newFixedThreadPool(20);
+	private ExecutorService executorService = Executors.newFixedThreadPool(5);
 	
 	@Incoming("triplestore")
 	public void processActivity(Record<String, String> record) {
 		final String iri = record.key();
+		LOGGER.debug("triple store indexing task: {}", iri);
 		JsonNode as;
 		try {
 			as = new ObjectMapper().readTree(record.value());
@@ -91,36 +94,29 @@ public class TripleStoreRouter {
 
 
 	private String get(String iri) {
-		URI uri;
 		try {
-			uri = new URI(iri);
-		} catch (URISyntaxException e) {
-			throw new Error("unexpected", e);
-		}
-		HttpClient http = HttpClient.newHttpClient();
-		HttpRequest req = HttpRequest.newBuilder(uri).GET()
-			.header("Prefer", "return=representation;")
-			.header("Accept", "application/n-triples")
-			.build();
-		try {
+			HttpClient http = HttpClient.newHttpClient();
+			HttpRequest req = HttpRequest.newBuilder(localhost(iri)).GET()
+				.header("Prefer", "return=representation;")
+				.header("Accept", "application/n-triples")
+				.build();
 			return http.send(req, BodyHandlers.ofString()).body();
-		} catch (IOException | InterruptedException e) {
-			LOGGER.error("Cannot get triples", e);
-			throw new Error(e);
+		} catch (IOException | InterruptedException | URISyntaxException e) {
+			LOGGER.error("Cannot get triples for {}", iri, e);
+			throw new CompletionException(e);
 		}
 	}
 	
 	private void create(String iri, String body) {
 		String insert = "INSERT DATA { GRAPH <"+iri+"> { "+ body + " } };";
 		HttpClient http = HttpClient.newHttpClient();
-		HttpRequest req = HttpRequest.newBuilder(triplestoreUrl).method("POST", BodyPublishers.ofString(sparqlUpdate(insert)))
+		HttpRequest req = HttpRequest.newBuilder(triplestoreUpdateUrl).method("POST", BodyPublishers.ofString(sparqlUpdate(insert)))
 		        .header("Content-Type", "application/x-www-form-urlencoded; charset=utf-8")
 		        .build();
 		try {
 			http.send(req, BodyHandlers.discarding());
 		} catch (IOException | InterruptedException e) {
 			LOGGER.error("Problem posting object triples", e);
-			throw new Error(e);
 		}
 	}
 	
@@ -136,14 +132,13 @@ public class TripleStoreRouter {
 				.map(t -> String.format("<%s> <%s> <%s> .\n", t.getSubject().getURI(), t.getPredicate().getURI(), t.getObject().getURI())).reduce("", (head, next) -> head+next);
 		String insert = "INSERT DATA { GRAPH <https://example.nps.gov/2021/nps-workflow#containsGraph> { " + containsTriples + " } };";
 		HttpClient http = HttpClient.newHttpClient();
-		HttpRequest req = HttpRequest.newBuilder(triplestoreUrl).method("POST", BodyPublishers.ofString(sparqlUpdate(insert)))
+		HttpRequest req = HttpRequest.newBuilder(triplestoreUpdateUrl).method("POST", BodyPublishers.ofString(sparqlUpdate(insert)))
 		        .header("Content-Type", "application/x-www-form-urlencoded; charset=utf-8")
 		        .build();
 		try {
 			http.send(req, BodyHandlers.discarding());
 		} catch (IOException | InterruptedException e) {
 			LOGGER.error("Problem posting object contains triples", e);
-			throw new Error(e);
 		}
 	}
 
@@ -151,7 +146,7 @@ public class TripleStoreRouter {
 	private void delete(String iri) {
 		String bodyA = sparqlUpdate("DELETE WHERE { GRAPH <" + iri + "> { ?s ?p ?o } };");
 		HttpClient http = HttpClient.newHttpClient();
-		HttpRequest reqA = HttpRequest.newBuilder(triplestoreUrl).method("POST", BodyPublishers.ofString(bodyA))
+		HttpRequest reqA = HttpRequest.newBuilder(triplestoreUpdateUrl).method("POST", BodyPublishers.ofString(bodyA))
 		        .header("Content-Type", "application/x-www-form-urlencoded; charset=utf-8")
 		        .build();
 		try {
@@ -164,14 +159,13 @@ public class TripleStoreRouter {
 	private void deleteContains(String iri) {
 		String body = "DELETE WHERE { GRAPH <https://example.nps.gov/2021/nps-workflow#containsGraph> { <"+ iri +"> <http://www.w3.org/ns/ldp#contains> ?o } };";
 		HttpClient http = HttpClient.newHttpClient();
-		HttpRequest req = HttpRequest.newBuilder(triplestoreUrl).method("POST", BodyPublishers.ofString(sparqlUpdate(body)))
+		HttpRequest req = HttpRequest.newBuilder(triplestoreUpdateUrl).method("POST", BodyPublishers.ofString(sparqlUpdate(body)))
 		        .header("Content-Type", "application/x-www-form-urlencoded; charset=utf-8")
 		        .build();
 		try {
 			http.send(req, BodyHandlers.discarding());
 		} catch (IOException | InterruptedException e) {
 			LOGGER.error("Problem deleting contains triples", e);
-			throw new Error(e);
 		}
 	}
 
