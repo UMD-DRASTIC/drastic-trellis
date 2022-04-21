@@ -18,7 +18,7 @@ services:
         protocol: tcp
         mode: host
     volumes:
-      - ./cassandra-data:/var/lib/cassandra
+      - ./.cassandra-data:/var/lib/cassandra
     networks:
       drastic:
 
@@ -43,6 +43,9 @@ services:
       - 2181:2181
     networks:
       drastic:
+    volumes:
+      - ./.zk-data/data:/var/lib/zookeeper/data
+      - ./.zk-data/txn-logs:/var/lib/zookeeper/log
 
   kafka:
     image: confluentinc/cp-kafka:latest
@@ -76,6 +79,7 @@ services:
       KAFKA_CREATE_TOPICS: "test:1:1"
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
     volumes:
+      - ./.kafka-data:/var/lib/kafka/data
       - /var/run/docker.sock:/var/run/docker.sock
 
   kafkacat:
@@ -93,7 +97,7 @@ services:
         protocol: tcp
         mode: host
     volumes:
-      - ./fuseki-data:/fuseki/databases
+      - ./.fuseki-data:/fuseki/databases
     networks:
       drastic:
 
