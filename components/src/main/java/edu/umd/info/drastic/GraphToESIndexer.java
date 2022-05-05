@@ -1,11 +1,9 @@
 package edu.umd.info.drastic;
 
-import static edu.umd.info.drastic.LDPHttpUtil.localhost;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
@@ -52,10 +50,10 @@ public class GraphToESIndexer {
 	public Uni<Void> processNewGraph(String msg) {
 		LOGGER.debug("process new graph uri: {}", msg);
 		return Uni.createFrom().item(msg).onItem().transformToUni(graphUri -> {
-			String graph = getGraph(graphUri);
-			LOGGER.debug("processing this graph:\n{}", graph);
+			String result = getSubjectsInGraph(graphUri);
+			LOGGER.debug("processing this graph:\n{}", result);
 			try {
-				JsonNode as = new ObjectMapper().readTree(graph);
+				JsonNode as = new ObjectMapper().readTree(result);
 				if(as.has("results")) {
 					for(JsonNode s : as.at("/results/bindings").findValues("s")) {
 						if("uri".equals(s.get("type").asText())) {
@@ -66,7 +64,8 @@ public class GraphToESIndexer {
 					}
 					return Uni.createFrom().voidItem();
 				} else {
-					throw new CompletionException(new IllegalArgumentException("cannot find values in activity stream "+graph));
+					LOGGER.debug("got json results:\n{}", as.toPrettyString());
+					return Uni.createFrom().voidItem();
 				}
 			} catch (JsonProcessingException e) {
 				LOGGER.error("cannot parse activitystream", e);
@@ -75,16 +74,16 @@ public class GraphToESIndexer {
 		});
 	}
 	
-	private String getGraph(String iri) {
+	private String getSubjectsInGraph(String iri) {
 		try {
 			HttpClient http = HttpClient.newHttpClient();
 			String query = "select DISTINCT ?s FROM <"+iri+"> WHERE { ?s ?p ?o. }";
-			HttpRequest req = HttpRequest.newBuilder(localhost(triplestoreQueryUrl)).POST(BodyPublishers.ofString(query))
+			HttpRequest req = HttpRequest.newBuilder(triplestoreQueryUrl).POST(BodyPublishers.ofString(query))
 				.header("Accept", "application/json")
 				.header("Content-Type", "application/sparql-query; charset=utf-8")
 				.build();
 			return http.send(req, BodyHandlers.ofString()).body();
-		} catch (IOException | InterruptedException | URISyntaxException e) {
+		} catch (IOException | InterruptedException e) {
 			LOGGER.error("Cannot get triples for {}", iri, e);
 			throw new CompletionException("Cannot get triples", e);
 		}
@@ -93,13 +92,13 @@ public class GraphToESIndexer {
 	private String getSubject(String iri) {
 		try {
 			HttpClient http = HttpClient.newHttpClient();
-			String query = "select ?p ?o WHERE { <"+iri+"> ?p ?o. }";
-			HttpRequest req = HttpRequest.newBuilder(localhost(triplestoreQueryUrl)).POST(BodyPublishers.ofString(query))
+			String query = "select ?p ?o WHERE { GRAPH ?g { <"+iri+"> ?p ?o. } }";
+			HttpRequest req = HttpRequest.newBuilder(triplestoreQueryUrl).POST(BodyPublishers.ofString(query))
 				.header("Accept", "application/json")
 				.header("Content-Type", "application/sparql-query; charset=utf-8")
 				.build();
 			return http.send(req, BodyHandlers.ofString()).body();
-		} catch (IOException | InterruptedException | URISyntaxException e) {
+		} catch (IOException | InterruptedException e) {
 			LOGGER.error("Cannot get triples for {}", iri, e);
 			throw new CompletionException(e);
 		}

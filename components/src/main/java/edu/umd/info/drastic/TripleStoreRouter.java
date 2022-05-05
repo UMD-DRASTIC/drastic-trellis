@@ -52,7 +52,7 @@ public class TripleStoreRouter {
 	@Outgoing("triplestore-newgraph")
 	public Uni<Message<String>> processMutiny(Message<String> activityStream) {
 		return Uni.createFrom().item(activityStream.getPayload()).onItem().transform(msg -> {
-			LOGGER.debug("Got activity stream: {}", msg);
+			//LOGGER.debug("Got activity stream: {}", msg);
 			try {
 				return new ObjectMapper().readTree(msg);
 			} catch (JsonProcessingException e) {
@@ -69,18 +69,20 @@ public class TripleStoreRouter {
 			String op = ((ArrayNode)json.at("/type")).get(1).asText();
 			String iri = json.get("object").get("id").asText();
 			LOGGER.debug("triple store process: {} {} Container:{} NonRDFSource:{}", op, iri, isContainer, isNonRDFSource);
-			if(isNonRDFSource && !iri.endsWith("?ext=description")) {
-				LOGGER.debug("skipping triple store indexing of a binary node: {}", iri);
-				return Uni.createFrom().nothing();  // no downstream events
-			}
 			if(!"Create".equals(op)) { // Update or Delete
 				delete(iri);
 				if(isContainer) deleteContains(iri);
 			}
 			if(!"Delete".equals(op)) { // Update or Create
 				String body = get(iri);
-				create(iri, body);
-				if(isContainer) createContains(iri, body);
+				if(isContainer) {
+					// Containers URLs have a / on the end, but their RDF identifiers do not.
+					iri = iri.substring(0, iri.length()-1);
+					create(iri, body);
+					createContains(iri, body);
+				} else {
+					create(iri, body);
+				}
 			}
 			return Uni.createFrom().item(Message.of(iri));
 		}).onItem().delayIt().by(Duration.ofSeconds(10));
