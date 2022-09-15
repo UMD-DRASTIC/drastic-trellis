@@ -14,12 +14,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -44,16 +41,13 @@ import io.smallrye.reactive.messaging.kafka.Record;
  * with {@code @ApplicationScoped}.
  */
 @ApplicationScoped
-public class HADublinCoreProcessor {
+public class HASpreadsheetToDublinCoreProcessor {
 
-	private static final Logger LOGGER = getLogger(HADublinCoreProcessor.class);
-
-	public static final Set<String> dcElements = new HashSet<String>(Arrays.asList(
-			"identifier", "title", "creator", "subject", "description", "date", "rights"));
+	private static final Logger LOGGER = getLogger(HASpreadsheetToDublinCoreProcessor.class);
 
 	private ExecutorService executorService = Executors.newFixedThreadPool(1);
 
-	@Incoming("dce")
+	@Incoming("spreadsheet2dc")
     public void process(Record<String, String> record) {
 		if(NPSFilenameUtil.isDCSheet(record.key())) {
 			LOGGER.debug("Dublin Core spreadsheet task: {}", record.key());
@@ -107,7 +101,7 @@ public class HADublinCoreProcessor {
 	}
 
 	private void writeRDF(Writer out, Sheet sheet, URL base) throws IOException {
-		out.write("@prefix dce: <http://purl.org/dc/elements/1.1/> .\n");
+		out.write("@prefix dcterms: <http://purl.org/dc/terms/> .\n");
 		out.write("@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .\n\n");
 		boolean columnsIdentified = false;
 		Map<Integer, String> columns2dc = new HashMap<Integer, String>();
@@ -124,32 +118,33 @@ public class HADublinCoreProcessor {
 			if(!columnsIdentified) {
 				for(Cell c : row) {
 					if(c.getCellType() == CellType.STRING) {
-						if(dcElements.contains(c.getStringCellValue().toLowerCase())) {
+						try {
+							NPSVocabulary.DCTERMS.valueOf(c.getStringCellValue().toLowerCase());
 							columns2dc.put(Integer.valueOf(c.getColumnIndex()), c.getStringCellValue().toLowerCase());
-						}
+						} catch(IllegalArgumentException ignored) {}
 					}
 				}
 				LOGGER.debug("columns identified {}", columns2dc.size());
 				columnsIdentified = true;
 			} else {
-				Map<String, String> dce = new HashMap<String, String>();
+				Map<String, String> dctermsPO = new HashMap<String, String>();
 				for(Cell c : row) {
 					Integer key = Integer.valueOf(c.getColumnIndex());
 					if(columns2dc.containsKey(key)) {
-						dce.put(columns2dc.get(key), c.getStringCellValue());
+						dctermsPO.put(columns2dc.get(key), c.getStringCellValue());
 					}
 				}
 				URI doc;
 				try {
-					doc = new URI(base.toExternalForm()+"/"+dce.get("identifier"));
+					doc = new URI(base.toExternalForm()+"/"+dctermsPO.get("identifier"));
 				} catch (URISyntaxException e1) {
 					LOGGER.error("Unexpected", e1);
 					return;
 				}
 				out.write("<" + doc.toASCIIString() + "> ");
-				Optional<String> statements = dce.entrySet().stream().map((e) -> {
+				Optional<String> statements = dctermsPO.entrySet().stream().map((e) -> {
 					String val = e.getKey().equals("date") ? "\""+e.getValue()+"\"^^xsd:date" : "\""+e.getValue().replace("\"", "\\\"")+"\"";
-					return "dce:"+e.getKey()+" "+val;
+					return "dcterms:"+e.getKey()+" "+val;
 				}).reduce((a, b) -> { return a+";\n\t"+b; });
 				if(statements.isPresent()) {
 					out.write(statements.get());

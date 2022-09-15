@@ -1,6 +1,7 @@
 package edu.umd.info.drastic;
 
 import static edu.umd.info.drastic.LDPHttpUtil.localhost;
+import static edu.umd.info.drastic.LDPHttpUtil.patchGraph;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import java.io.IOException;
@@ -32,6 +33,7 @@ import org.slf4j.Logger;
 import org.trellisldp.api.RDFFactory;
 import org.trellisldp.vocabulary.Trellis;
 
+import io.smallrye.reactive.messaging.annotations.Blocking;
 import io.smallrye.reactive.messaging.kafka.Record;
 
 /**
@@ -50,6 +52,7 @@ public class DigestProcessor {
 	private ExecutorService executorService = Executors.newFixedThreadPool(1);
 	
 	@Incoming("fixity")
+	@Blocking
     public void process(Record<String, String> record) {
 		IRI id = rdf.createIRI(record.key());
 		LOGGER.debug("digest processor task: {}", id);
@@ -114,19 +117,7 @@ public class DigestProcessor {
     g.add(fixSHA256, rdf.createIRI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), rdf.createIRI("http://id.loc.gov/vocabulary/cryptographicHashFunctions/sha256"));
     g.add(fixSHA256, rdf.createIRI("http://purl.org/dc/elements/1.1/creator"), rdf.createLiteral("java.security.MessageDigest"));
 
-    String patch = "INSERT { "+ g.toString() +" } WHERE {}";
-	HttpResponse<Void> response;
-	try {
-		HttpClient http = HttpClient.newHttpClient();
-		URI localDescLoc = localhost(descriptionLoc);
-		response = http.send(HttpRequest.newBuilder(localDescLoc).method("PATCH", HttpRequest.BodyPublishers.ofString(patch))
-			.header("Content-type", "application/sparql-update").build(), HttpResponse.BodyHandlers.discarding());
-		if(response.statusCode() != 204) {
-			LOGGER.error("Got a failure when patching binary description: {}", response.statusCode());
-		}
-	} catch (IOException | InterruptedException | URISyntaxException e) {
-		LOGGER.error("Exception on digest patch", e);
-	}
+    patchGraph(g, descriptionLoc.toASCIIString());
   }
 
 }

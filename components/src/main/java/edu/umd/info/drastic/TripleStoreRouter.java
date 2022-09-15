@@ -1,35 +1,30 @@
 package edu.umd.info.drastic;
 
-import static edu.umd.info.drastic.LDPHttpUtil.localhost;
+import static edu.umd.info.drastic.LDPHttpUtil.getGraph;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import java.io.IOException;
-import java.io.StringReader;
 import java.io.UncheckedIOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse.BodyHandlers;
-import java.time.Duration;
-import java.util.ArrayList;
+import java.text.MessageFormat;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletionException;
+import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import javax.inject.Inject;
 
-import org.apache.jena.atlas.lib.SinkToCollection;
-import org.apache.jena.graph.Triple;
-import org.apache.jena.riot.Lang;
-import org.apache.jena.riot.RDFParser;
-import org.apache.jena.riot.system.StreamRDFLib;
+import org.apache.commons.rdf.api.Graph;
+import org.apache.commons.rdf.api.Triple;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
-import org.eclipse.microprofile.reactive.messaging.Message;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 import org.slf4j.Logger;
 import org.trellisldp.vocabulary.LDP;
@@ -39,7 +34,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
-import io.smallrye.mutiny.Uni;
+import io.smallrye.reactive.messaging.annotations.Blocking;
 
 public class TripleStoreRouter {
 	private static final Logger LOGGER = getLogger(TripleStoreRouter.class);
@@ -50,62 +45,52 @@ public class TripleStoreRouter {
 	
 	@Incoming("triplestore")
 	@Outgoing("triplestore-newgraph")
-	public Uni<Message<String>> processMutiny(Message<String> activityStream) {
-		return Uni.createFrom().item(activityStream.getPayload()).onItem().transform(msg -> {
-			//LOGGER.debug("Got activity stream: {}", msg);
-			try {
-				return new ObjectMapper().readTree(msg);
-			} catch (JsonProcessingException e) {
-				LOGGER.debug("triple store AS json parsing failed", e);
-				throw new CompletionException("triple store AS json parsing failed", e);
-			}
-		}).onItem().transformToUni(json -> {
-			boolean isContainer = StreamSupport.stream(((ArrayNode)json.at("/object/type")).spliterator(), false)
-					.map(JsonNode::asText)
-					.anyMatch(t -> LDP.Container.getIRIString().equals(t));
-			boolean isNonRDFSource = StreamSupport.stream(((ArrayNode)json.at("/object/type")).spliterator(), false)
-					.map(JsonNode::asText)
-					.anyMatch(t -> LDP.NonRDFSource.getIRIString().equals(t));
-			String op = ((ArrayNode)json.at("/type")).get(1).asText();
-			String iri = json.get("object").get("id").asText();
-			LOGGER.debug("triple store process: {} {} Container:{} NonRDFSource:{}", op, iri, isContainer, isNonRDFSource);
-			if(!"Create".equals(op)) { // Update or Delete
-				delete(iri);
-				if(isContainer) deleteContains(iri);
-			}
-			if(!"Delete".equals(op)) { // Update or Create
-				String body = get(iri);
-				if(isContainer) {
-					// Containers URLs have a / on the end, but their RDF identifiers do not.
-					iri = iri.substring(0, iri.length()-1);
-					create(iri, body);
-					createContains(iri, body);
-				} else {
-					create(iri, body);
-				}
-			}
-			return Uni.createFrom().item(Message.of(iri));
-		}).onItem().delayIt().by(Duration.ofSeconds(10));
-	}
-
-
-	private String get(String iri) {
+	@Blocking("triplestore-suppliers")
+	public String process(String activityStream) {
+		JsonNode json = null;
 		try {
-			HttpClient http = HttpClient.newHttpClient();
-			HttpRequest req = HttpRequest.newBuilder(localhost(iri)).GET()
-				.header("Prefer", "return=representation;")
-				.header("Accept", "application/n-triples")
-				.build();
-			return http.send(req, BodyHandlers.ofString()).body();
-		} catch (IOException | InterruptedException | URISyntaxException e) {
-			LOGGER.error("Cannot get triples for {}", iri, e);
-			throw new CompletionException(e);
+			json = new ObjectMapper().readTree(activityStream);
+		} catch (JsonProcessingException e) {
+			LOGGER.warn("triple store AS json parsing failed", e);
+			throw new CompletionException("triple store AS json parsing failed", e);
 		}
+		boolean isContainer = StreamSupport.stream(((ArrayNode)json.at("/object/type")).spliterator(), false)
+				.map(JsonNode::asText)
+				.anyMatch(t -> LDP.Container.getIRIString().equals(t));
+		String op = ((ArrayNode)json.at("/type")).get(1).asText();
+		String iri = json.get("object").get("id").asText();
+		//LOGGER.debug("triple store process: {} {} Container:{} NonRDFSource:{}", op, iri, isContainer, isNonRDFSource);
+		if(!"Create".equals(op)) { // Update or Delete
+			delete(iri);
+			if(isContainer) deleteContains(iri);
+		}
+		if(!"Delete".equals(op)) { // Update or Create
+			Graph g = getGraph(iri);
+			Map<Boolean, List<Triple>> splitGraph = g.stream()
+					.collect(Collectors.<Triple>partitioningBy(t -> {
+						return t.getPredicate().getIRIString().equals("http://www.w3.org/ns/ldp#contains");
+					}));
+			if(isContainer && splitGraph.get(Boolean.TRUE).size() > 0) {
+				createContains(splitGraph.get(Boolean.TRUE));
+			}
+			create(iri, splitGraph.get(Boolean.FALSE));
+		}
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException unexpected) {
+			throw new CompletionException(unexpected);
+		}
+		return iri;
 	}
 	
-	private void create(String iri, String body) {
-		String insert = "INSERT DATA { GRAPH <"+iri+"> { "+ body + " } };";
-		LOGGER.debug("triple store insert:\n{}", insert);
+	private void create(String iri, List<Triple> g) {
+		if(g.size() == 0) return;
+		String serialized = g.stream().map(t -> MessageFormat.format("{0} {1} {2} .", 
+				t.getSubject().ntriplesString(),
+				t.getPredicate().ntriplesString(),
+				t.getObject().ntriplesString())).collect(Collectors.joining("\n"));
+		String insert = "INSERT DATA { GRAPH <"+iri+"> { "+ serialized + " } };";
+		//LOGGER.debug("triple store insert:\n{}", insert);
 		HttpClient http = HttpClient.newHttpClient();
 		HttpRequest req = HttpRequest.newBuilder(triplestoreUpdateUrl).method("POST", BodyPublishers.ofString(sparqlUpdate(insert)))
 		        .header("Content-Type", "application/x-www-form-urlencoded; charset=utf-8")
@@ -117,17 +102,13 @@ public class TripleStoreRouter {
 		}
 	}
 	
-	private void createContains(String iri, String body) {
-		List<Triple> triples = new ArrayList<Triple>();
-		try {
-		RDFParser.create().lang(Lang.TURTLE).source(new StringReader(body)).parse(StreamRDFLib.sinkTriples(new SinkToCollection<Triple>(triples)));
-		} catch(Exception e) {
-			LOGGER.error("something", e);
-		}
-		if(triples.size() == 0) return;
-		String containsTriples = triples.stream().filter(t -> t.getPredicate().getURI().equals("http://www.w3.org/ns/ldp#contains"))
-				.map(t -> String.format("<%s> <%s> <%s> .\n", t.getSubject().getURI(), t.getPredicate().getURI(), t.getObject().getURI())).reduce("", (head, next) -> head+next);
-		String insert = "INSERT DATA { GRAPH <https://example.nps.gov/2021/nps-workflow#containsGraph> { " + containsTriples + " } };";
+	private void createContains(List<Triple> g) {
+		String serialized = g.stream().map(t -> MessageFormat.format("{0} {1} {2} .", 
+				t.getSubject().ntriplesString(),
+				t.getPredicate().ntriplesString(),
+				t.getObject().ntriplesString())).collect(Collectors.joining("\n"));
+		//LOGGER.debug("contains graph insert: {}", serialized);
+		String insert = "INSERT DATA { GRAPH <https://example.nps.gov/2021/nps-workflow#containsGraph> { " + serialized + " } };";
 		HttpClient http = HttpClient.newHttpClient();
 		HttpRequest req = HttpRequest.newBuilder(triplestoreUpdateUrl).method("POST", BodyPublishers.ofString(sparqlUpdate(insert)))
 		        .header("Content-Type", "application/x-www-form-urlencoded; charset=utf-8")

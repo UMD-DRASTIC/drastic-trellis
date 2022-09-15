@@ -32,5 +32,14 @@ nb-configuration.xml
 build/
 
 # Data folders w/empty placeholders for Docker Dev Stack
-cassandra-data/**
-fuseki-data/**
+docker_stack_vols/cassandra-data/**
+docker_stack_vols/elasticsearch-data/**
+docker_stack_vols/fuseki-data/DB2/**
+docker_stack_vols/kafka-data/**
+docker_stack_vols/trellis_data/**
+docker_stack_vols/trellis_log/**
+docker_stack_vols/zookeeper-data/data/**
+docker_stack_vols/zookeeper-data/txn-logs/**
+
+# NER models
+docker_stack_vols/config/tika/**/*.bin

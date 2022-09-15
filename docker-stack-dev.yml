@@ -5,6 +5,7 @@ services:
 
   cassandra-1:
     image: cassandra:3.11.11
+    user: 1000:1000
     environment:
       CASSANDRA_BROADCAST_ADDRESS: localhost
       CASSANDRA_LISTEN_ADDRESS: tasks.cassandra-1
@@ -18,7 +19,7 @@ services:
         protocol: tcp
         mode: host
     volumes:
-      - ./.cassandra-data:/var/lib/cassandra
+      - ./docker_stack_vols/cassandra-data:/var/lib/cassandra
     networks:
       drastic:
 
@@ -31,7 +32,7 @@ services:
         condition: on-failure
         delay: 10s
     volumes:
-      - ./trellis.cql:/trellis.cql
+      - ./docker_stack_vols/config/trellis.cql:/trellis.cql
     command: cqlsh cassandra-1 -f /trellis.cql
     networks:
       - drastic
@@ -44,8 +45,8 @@ services:
     networks:
       drastic:
     volumes:
-      - ./.zk-data/data:/data
-      - ./.zk-data/txn-logs:/datalog
+      - ./docker_stack_vols/zookeeper-data/data:/data
+      - ./docker_stack_vols/zookeeper-data/txn-logs:/datalog
 
   kafka:
     image: confluentinc/cp-kafka:latest
@@ -74,14 +75,14 @@ services:
       KAFKA_CREATE_TOPICS: "test:1:1"
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
     volumes:
-      - ./.kafka-data:/var/lib/kafka/data
+      - ./docker_stack_vols/kafka-data:/var/lib/kafka/data
       - /var/run/docker.sock:/var/run/docker.sock
 
-  kafkacat:
-    image: confluentinc/cp-kafkacat
-    command: sleep infinity
-    networks:
-      drastic:
+#  kafkacat:
+#    image: confluentinc/cp-kafkacat
+#    command: ["sleep", "infinity"]
+#    networks:
+#      drastic:
 
   fuseki:
     image: gregjan/fuseki:latest
@@ -92,23 +93,50 @@ services:
         protocol: tcp
         mode: host
     volumes:
-      - ./.fuseki-data:/fuseki/databases
+      - ./docker_stack_vols/fuseki-data:/fuseki/databases
+    networks:
+      drastic:
+
+  tika:
+    image: apache/tika:1.28.4-full
+    # Use custom script as entrypoint to go fetch models and setup recognisers
+    entrypoint: [ "/ner/run_tika_server.sh"]
+    restart: on-failure
+    ports:
+      - target: 9998
+        published: 9998
+        protocol: tcp
+        mode: host
+    volumes:
+      -  ./docker_stack_vols/config/tika:/ner
+    environment:
+      TAG: 1.28.4
+      TIKA_JAR: tika-server
+      TIKA_SERVER_CLASS: org.apache.tika.server.TikaServerCli
     networks:
       drastic:
 
   elasticsearch:
     image: elasticsearch:7.17.1
     environment:
-      - discovery.type=single-node
-      - ES_JAVA_OPTS=-Xmx2g
-      - REMOVED_ES_JAVA_OPTS=-Xms2g
+      discovery.type: single-node
+      ES_JAVA_OPTS: -Xmx2g
+      REMOVED_ES_JAVA_OPTS: -Xms2g
+      http.cors.enabled : "true"
+      http.cors.allow-origin: "*"
+      http.cors.allow-methods: OPTIONS, HEAD, GET, POST, PUT, DELETE
+      http.cors.allow-headers: X-Requested-With,X-Auth-Token,Content-Type,Content-Length
+      http.cors.allow-credentials: "true"
     ports:
-      - 9200:9200
+      - target: 9200
+        published: 9200
+        protocol: tcp
+        mode: host
     volumes:
-      - ./.es_data:/usr/share/elasticsearch/data
+      - ./docker_stack_vols/elasticsearch-data:/usr/share/elasticsearch/data
     networks:
       drastic:
-
+              
 networks:
   drastic:
     driver: overlay

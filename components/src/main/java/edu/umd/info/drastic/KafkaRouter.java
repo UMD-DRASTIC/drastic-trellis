@@ -6,6 +6,7 @@ import java.util.stream.StreamSupport;
 
 import javax.enterprise.context.ApplicationScoped;
 
+import org.eclipse.microprofile.reactive.messaging.Acknowledgment;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 import org.slf4j.Logger;
@@ -39,6 +40,7 @@ public class KafkaRouter {
 	
 	@Incoming("broadcast")
     @Outgoing("objects-out")
+	@Acknowledgment(Acknowledgment.Strategy.PRE_PROCESSING)
     public Record<String, String> sendActivityStream(String payload) {
 		JsonNode as;
 		try {
@@ -52,6 +54,7 @@ public class KafkaRouter {
 	
 	@Incoming("broadcast")
     @Outgoing("new-binaries-out")
+	@Acknowledgment(Acknowledgment.Strategy.PRE_PROCESSING)
     public Record<String, String> sendNewBinaries(String payload) {
 		JsonNode as;
 		try {

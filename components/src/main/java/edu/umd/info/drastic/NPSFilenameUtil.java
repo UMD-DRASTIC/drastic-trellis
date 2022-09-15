@@ -22,10 +22,12 @@ public class NPSFilenameUtil {
 	private static Pattern dcSheets = Pattern.compile("(.*/)?(.*)inventory\\.xlsx$");
 	private static Pattern pageFile = Pattern.compile("(.*/)?(.*_P\\d\\d\\d)\\.tif{1,2}$");
 	private static Pattern pageAccessFile = Pattern.compile("(.*/)?(.*_P\\d\\d\\d)_ACCESS\\.png$");
+	private static Pattern pageThumbnailFile = Pattern.compile("(.*/)?(.*_P\\d\\d\\d)_THUMBNAIL\\.png$");
 	private static Pattern pageFileDocId = Pattern.compile("(.*/)?(.*_D\\d\\d)_P\\d\\d\\d\\.tif{1,2}$");
 	
 	public static Predicate<String> PAGE_FILE_PREDICATE = pageFile.asMatchPredicate();
 	public static Predicate<String> PAGE_ACCESS_FILE_PREDICATE = pageAccessFile.asMatchPredicate();
+	public static Predicate<String> PAGE_THUMBNAIL_FILE_PREDICATE = pageThumbnailFile.asMatchPredicate();
 	
 	public static boolean isMD5Sheet(String uri) {
 		return md5Sheets.matcher(uri).matches();

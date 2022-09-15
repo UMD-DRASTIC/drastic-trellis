@@ -1,6 +1,7 @@
 package edu.umd.info.drastic;
 
 import static edu.umd.info.drastic.LDPHttpUtil.localhost;
+import static edu.umd.info.drastic.LDPHttpUtil.patchGraph;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import java.io.BufferedInputStream;
@@ -134,16 +135,7 @@ public class HAManifestProcessor {
         g.add(fixMD5, rdf.createIRI("http://www.w3.org/1999/02/22-rdf-syntax-ns#value"), rdf.createLiteral(md5));
         g.add(fixMD5, rdf.createIRI("http://purl.org/dc/elements/1.1/creator"), rdf.createLiteral("History & Associates"));
         g.add(fixMD5, rdf.createIRI("http://purl.org/dc/elements/1.1/source"), rdf.createIRI(manifestLoc.toString()));
-        LOGGER.debug("revised graph: {}", g);
-        String patch = "INSERT { "+ g.toString() +" }" +
-        		"WHERE { }";
-		HttpResponse<Void> res = http.send(HttpRequest.newBuilder(localhost(fileDescLoc)).method("PATCH", HttpRequest.BodyPublishers.ofString(patch))
-				.header("Content-type", "application/sparql-update").build(), HttpResponse.BodyHandlers.discarding());
-		if(res.statusCode() == 404) {
-			LOGGER.debug("404 for manifest entry");
-		} else if(res.statusCode() != 204) {
-			LOGGER.error("Got a failure when patching binary description for manifest md5: {}", res.statusCode());
-		}
+        patchGraph(g, fileDescLoc.toASCIIString());
     }
 
 }
