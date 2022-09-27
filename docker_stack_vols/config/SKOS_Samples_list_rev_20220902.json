@@ -1,0 +1,4450 @@
+[
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn85022961",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Bethune, Mary Jane McLeod, 1875-1955"
+        }
+      ]
+    },
+    {
+      "@id": "_:b12iddOtlocdOtgovauthoritiesnamesn85022961",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "McLeod, Mary, 1875-1955"
+        }
+      ]
+    },
+    {
+      "@id": "_:b27iddOtlocdOtgovauthoritiesnamesn85022961",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n85022961"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1985-05-20T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b35iddOtlocdOtgovauthoritiesnamesn85022961",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n85022961"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/ien"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2015-04-03T07:54:14"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n85022961",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Bethune, Mary McLeod, 1875-1955"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn85022961"
+        },
+        {
+          "@id": "_:b12iddOtlocdOtgovauthoritiesnamesn85022961"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++85022961#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q291068"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/154124"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/154124"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q291068"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Bethune, Mary Jane McLeod, 1875-1955"
+        },
+        {
+          "@value": "McLeod, Mary, 1875-1955"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b27iddOtlocdOtgovauthoritiesnamesn85022961"
+        },
+        {
+          "@id": "_:b35iddOtlocdOtgovauthoritiesnamesn85022961"
+        }
+      ]
+    },
+    {
+      "@id": "_:b22iddOtlocdOtgovauthoritiesnamesn79144645",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "רוזבלט, אלינור"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n79144645",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Roosevelt, Eleanor, 1884-1962"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn79144645"
+        },
+        {
+          "@id": "_:b12iddOtlocdOtgovauthoritiesnamesn79144645"
+        },
+        {
+          "@id": "_:b17iddOtlocdOtgovauthoritiesnamesn79144645"
+        },
+        {
+          "@id": "_:b22iddOtlocdOtgovauthoritiesnamesn79144645"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++79144645#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q83396"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/47200"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/47200"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q83396"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#editorial": [
+        {
+          "@value": "[Machine-derived non-Latin script reference project.]"
+        },
+        {
+          "@value": "[Non-Latin script reference not evaluated.]"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Roosevelt, Eleanor Roosevelt, 1884-1962"
+        },
+        {
+          "@value": "Roosevelt, Anna Eleanor Roosevelt, 1884-1962"
+        },
+        {
+          "@value": "Roosevelt, Franklin D., Mrs., 1884-1962"
+        },
+        {
+          "@value": "רוזבלט, אלינור"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b45iddOtlocdOtgovauthoritiesnamesn79144645"
+        },
+        {
+          "@id": "_:b53iddOtlocdOtgovauthoritiesnamesn79144645"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn79144645",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Roosevelt, Eleanor Roosevelt, 1884-1962"
+        }
+      ]
+    },
+    {
+      "@id": "_:b12iddOtlocdOtgovauthoritiesnamesn79144645",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Roosevelt, Anna Eleanor Roosevelt, 1884-1962"
+        }
+      ]
+    },
+    {
+      "@id": "_:b17iddOtlocdOtgovauthoritiesnamesn79144645",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Roosevelt, Franklin D., Mrs., 1884-1962"
+        }
+      ]
+    },
+    {
+      "@id": "_:b45iddOtlocdOtgovauthoritiesnamesn79144645",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n79144645"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1980-03-10T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b53iddOtlocdOtgovauthoritiesnamesn79144645",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n79144645"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2020-10-01T12:09:45"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "_:b15iddOtlocdOtgovauthoritiesnamesno90024764",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no90024764"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/clu"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1990-11-15T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/no90024764",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Height, Dorothy I. (Dorothy Irene), 1912-2010"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cno+90024764#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://id.worldcat.org/fast/1753789"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q298259"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/278226"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1753789"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/278226"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q298259"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b15iddOtlocdOtgovauthoritiesnamesno90024764"
+        },
+        {
+          "@id": "_:b23iddOtlocdOtgovauthoritiesnamesno90024764"
+        }
+      ]
+    },
+    {
+      "@id": "_:b23iddOtlocdOtgovauthoritiesnamesno90024764",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no90024764"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2015-11-05T10:50:31"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n00010499",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Thurman, Sue Bailey"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++00010499#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://id.worldcat.org/fast/446595"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q7634004"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/446595"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q7634004"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b13iddOtlocdOtgovauthoritiesnamesn00010499"
+        }
+      ]
+    },
+    {
+      "@id": "_:b13iddOtlocdOtgovauthoritiesnamesn00010499",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n00010499"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2000-04-13T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b13iddOtlocdOtgovauthoritiesnamesn88218570",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n88218570"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1989-03-02T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b21iddOtlocdOtgovauthoritiesnamesn88218570",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n88218570"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1989-03-31T06:27:32"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n88218570",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Lampkin, Daisy E. (Daisy Elizabeth), 1882-1965"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++88218570#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q5209710"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/246263"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/246263"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q5209710"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b13iddOtlocdOtgovauthoritiesnamesn88218570"
+        },
+        {
+          "@id": "_:b21iddOtlocdOtgovauthoritiesnamesn88218570"
+        }
+      ]
+    },
+    {
+      "@id": "_:b12iddOtlocdOtgovauthoritiesnamesno90024847",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Ferebee, Dorothy Boulding, d. 1980"
+        }
+      ]
+    },
+    {
+      "@id": "_:b29iddOtlocdOtgovauthoritiesnamesno90024847",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no90024847"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/clu"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1990-11-16T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesno90024847",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Boulding, Dorothy Celeste, 1898?-1980"
+        }
+      ]
+    },
+    {
+      "@id": "_:b37iddOtlocdOtgovauthoritiesnamesno90024847",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no90024847"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/kyu"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2020-10-19T07:00:15"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/no90024847",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Ferebee, Dorothy Boulding, 1898-1980"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesno90024847"
+        },
+        {
+          "@id": "_:b12iddOtlocdOtgovauthoritiesnamesno90024847"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cno+90024847#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q4793663"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/278231"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1802167"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1802167"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/278231"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q4793663"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Boulding, Dorothy Celeste, 1898?-1980"
+        },
+        {
+          "@value": "Ferebee, Dorothy Boulding, d. 1980"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b29iddOtlocdOtgovauthoritiesnamesno90024847"
+        },
+        {
+          "@id": "_:b37iddOtlocdOtgovauthoritiesnamesno90024847"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/no2019015042",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Carter, Eunice Hunton"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cno2019015042#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q5409738"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q5409738"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b11iddOtlocdOtgovauthoritiesnamesno2019015042"
+        },
+        {
+          "@id": "_:b19iddOtlocdOtgovauthoritiesnamesno2019015042"
+        }
+      ]
+    },
+    {
+      "@id": "_:b11iddOtlocdOtgovauthoritiesnamesno2019015042",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no2019015042"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/cstlaw"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2019-01-29T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b19iddOtlocdOtgovauthoritiesnamesno2019015042",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no2019015042"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/nn"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2022-03-08T06:46:15"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n98061355",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Mason, Vivian Carter"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++98061355#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://id.worldcat.org/fast/1544123"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1544123"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b11iddOtlocdOtgovauthoritiesnamesn98061355"
+        }
+      ]
+    },
+    {
+      "@id": "_:b11iddOtlocdOtgovauthoritiesnamesn98061355",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n98061355"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1998-07-08T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b26iddOtlocdOtgovauthoritiesnamesnr2002026204",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/nr2002026204"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/nn"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2003-05-21T03:31:06"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/nr2002026204",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Boozer, Thelma Berlack, 1906-"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesnr2002026204"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cnr2002026204#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q56425483"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q56425483"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Boozer, Thelma, 1906-"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b18iddOtlocdOtgovauthoritiesnamesnr2002026204"
+        },
+        {
+          "@id": "_:b26iddOtlocdOtgovauthoritiesnamesnr2002026204"
+        }
+      ]
+    },
+    {
+      "@id": "_:b18iddOtlocdOtgovauthoritiesnamesnr2002026204",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/nr2002026204"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/nn"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2002-07-16T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesnr2002026204",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Boozer, Thelma, 1906-"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n80130042",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Boyd, Norma E., 1888-"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++80130042#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q7051669"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/61882"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/61882"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q7051669"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b13iddOtlocdOtgovauthoritiesnamesn80130042"
+        },
+        {
+          "@id": "_:b21iddOtlocdOtgovauthoritiesnamesn80130042"
+        }
+      ]
+    },
+    {
+      "@id": "_:b13iddOtlocdOtgovauthoritiesnamesn80130042",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n80130042"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1980-10-14T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b21iddOtlocdOtgovauthoritiesnamesn80130042",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n80130042"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1984-03-22T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "_:b13iddOtlocdOtgovauthoritiesnamesno90025256",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no90025256"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/clu"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1990-11-21T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b21iddOtlocdOtgovauthoritiesnamesno90025256",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no90025256"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/clu"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1990-11-28T05:49:48"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/no90025256",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Cowan, Polly, 1913-1976"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cno+90025256#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://id.worldcat.org/fast/278492"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q94629133"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/278492"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q94629133"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b13iddOtlocdOtgovauthoritiesnamesno90025256"
+        },
+        {
+          "@id": "_:b21iddOtlocdOtgovauthoritiesnamesno90025256"
+        }
+      ]
+    },
+    {
+      "@id": "_:b13iddOtlocdOtgovauthoritiesnamesn78057602",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n78057602"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1978-08-21T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b21iddOtlocdOtgovauthoritiesnamesn78057602",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n78057602"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2012-05-01T10:24:55"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n78057602",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Sloan, Edith Barksdale"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++78057602#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://id.worldcat.org/fast/25968"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q105871722"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/25968"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q105871722"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b13iddOtlocdOtgovauthoritiesnamesn78057602"
+        },
+        {
+          "@id": "_:b21iddOtlocdOtgovauthoritiesnamesn78057602"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n94117123",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Dago, Jeanne Donaldson"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++94117123#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b9iddOtlocdOtgovauthoritiesnamesn94117123"
+        }
+      ]
+    },
+    {
+      "@id": "_:b9iddOtlocdOtgovauthoritiesnamesn94117123",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n94117123"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1994-12-06T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b13iddOtlocdOtgovauthoritiesnamesn97061930",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n97061930"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1997-06-17T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n97061930",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Beal, Frances, 1940-"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++97061930#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q5478825"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1962493"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1962493"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q5478825"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b13iddOtlocdOtgovauthoritiesnamesn97061930"
+        }
+      ]
+    },
+    {
+      "@id": "_:b9iddOtlocdOtgovauthoritiesnamesn96058750",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n96058750"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1996-06-14T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n96058750",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Brown, Jeanetta Welch, 1910-"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++96058750#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b9iddOtlocdOtgovauthoritiesnamesn96058750"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn97061606",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Burrell, Prudence Burns, 1917-"
+        }
+      ]
+    },
+    {
+      "@id": "_:b34iddOtlocdOtgovauthoritiesnamesn97061606",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n97061606"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/miem"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2019-03-21T07:31:34"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n97061606",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Burrell, Prudence Burns, 1916-2012"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn97061606"
+        },
+        {
+          "@id": "_:b12iddOtlocdOtgovauthoritiesnamesn97061606"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#semanticRelation": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n79043154"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++97061606#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://id.worldcat.org/fast/393285"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/393285"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Burrell, Prudence Burns, 1917-"
+        },
+        {
+          "@value": "Burrell, Prudence, 1916-2012"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b26iddOtlocdOtgovauthoritiesnamesn97061606"
+        },
+        {
+          "@id": "_:b34iddOtlocdOtgovauthoritiesnamesn97061606"
+        }
+      ]
+    },
+    {
+      "@id": "_:b26iddOtlocdOtgovauthoritiesnamesn97061606",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n97061606"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1997-06-16T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b12iddOtlocdOtgovauthoritiesnamesn97061606",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Burrell, Prudence, 1916-2012"
+        }
+      ]
+    },
+    {
+      "@id": "_:b17iddOtlocdOtgovauthoritiesnamesno89020119",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no89020119"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/inu"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1990-01-12T11:57:13"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "_:b9iddOtlocdOtgovauthoritiesnamesno89020119",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no89020119"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/inu"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1989-12-11T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/no89020119",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Dickinson, Gloria Harper"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cno+89020119#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b9iddOtlocdOtgovauthoritiesnamesno89020119"
+        },
+        {
+          "@id": "_:b17iddOtlocdOtgovauthoritiesnamesno89020119"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn97061564",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Dugger, Madeline Kountze, 1897-1994"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n97061564",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Kelly, Madeline Kountze Dugger, 1897-1994"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn97061564"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++97061564#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Dugger, Madeline Kountze, 1897-1994"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b16iddOtlocdOtgovauthoritiesnamesn97061564"
+        }
+      ]
+    },
+    {
+      "@id": "_:b16iddOtlocdOtgovauthoritiesnamesn97061564",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n97061564"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1997-06-16T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn96058992",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Daniels-Eichelberger, Brenda, 1939-"
+        }
+      ]
+    },
+    {
+      "@id": "_:b20iddOtlocdOtgovauthoritiesnamesn96058992",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n96058992"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1996-06-14T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b28iddOtlocdOtgovauthoritiesnamesn96058992",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n96058992"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/ocolc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2000-11-10T07:04:13"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n96058992",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Eichelberger, Brenda, 1939-"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn96058992"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++96058992#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q63487518"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1528106"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1528106"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q63487518"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Daniels-Eichelberger, Brenda, 1939-"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b20iddOtlocdOtgovauthoritiesnamesn96058992"
+        },
+        {
+          "@id": "_:b28iddOtlocdOtgovauthoritiesnamesn96058992"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n97061830",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Green, Susie, 1898-1979"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++97061830#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b9iddOtlocdOtgovauthoritiesnamesn97061830"
+        }
+      ]
+    },
+    {
+      "@id": "_:b9iddOtlocdOtgovauthoritiesnamesn97061830",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n97061830"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1997-06-17T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n96061183",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Haywood, Margaret A. (Margaret Austin), 1912-2004"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn96061183"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++96061183#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://id.worldcat.org/fast/376439"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/376439"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Haywood, Margaret A., 1912-"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b18iddOtlocdOtgovauthoritiesnamesn96061183"
+        },
+        {
+          "@id": "_:b26iddOtlocdOtgovauthoritiesnamesn96061183"
+        }
+      ]
+    },
+    {
+      "@id": "_:b26iddOtlocdOtgovauthoritiesnamesn96061183",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n96061183"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/ncu"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2015-05-22T07:38:44"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn96061183",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Haywood, Margaret A., 1912-"
+        }
+      ]
+    },
+    {
+      "@id": "_:b18iddOtlocdOtgovauthoritiesnamesn96061183",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n96061183"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1996-06-21T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n88172469",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Johnson, Marie Antoinette Burgette, 1892-1965"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn88172469"
+        },
+        {
+          "@id": "_:b12iddOtlocdOtgovauthoritiesnamesn88172469"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++88172469#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://id.worldcat.org/fast/258122"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q94620234"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/258122"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q94620234"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Burgette, Marie Antoinette, 1892-1965"
+        },
+        {
+          "@value": "Johnson, Charles Spurgeon, Mrs., 1892-1965"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b27iddOtlocdOtgovauthoritiesnamesn88172469"
+        },
+        {
+          "@id": "_:b35iddOtlocdOtgovauthoritiesnamesn88172469"
+        }
+      ]
+    },
+    {
+      "@id": "_:b35iddOtlocdOtgovauthoritiesnamesn88172469",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n88172469"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1989-10-27T08:25:12"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn88172469",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Burgette, Marie Antoinette, 1892-1965"
+        }
+      ]
+    },
+    {
+      "@id": "_:b12iddOtlocdOtgovauthoritiesnamesn88172469",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Johnson, Charles Spurgeon, Mrs., 1892-1965"
+        }
+      ]
+    },
+    {
+      "@id": "_:b27iddOtlocdOtgovauthoritiesnamesn88172469",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n88172469"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1989-10-02T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b9iddOtlocdOtgovauthoritiesnamesn96061767",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n96061767"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1996-06-24T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n96061767",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Johnson, Mildred Bell"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++96061767#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b9iddOtlocdOtgovauthoritiesnamesn96061767"
+        }
+      ]
+    },
+    {
+      "@id": "_:b12iddOtlocdOtgovauthoritiesnamesn80028176",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Noël, Lois Mailou Pierre-"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n80028176",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Jones, Lois Mailou"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn80028176"
+        },
+        {
+          "@id": "_:b12iddOtlocdOtgovauthoritiesnames 80028176"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#semanticRelation": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n50047079"
+        },
+        {
+          "@id": "http://id.loc.gov/authorities/names/n79064543"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++80028176#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q3258676"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/51276"
+        },
+        {
+          "@id": "http://vocab.getty.edu/ulan/500034910"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/51276"
+        },
+        {
+          "@id": "http://vocab.getty.edu/ulan/500034910"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q3258676"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Pierre-Noël, Lois Mailou"
+        },
+        {
+          "@value": "Noël, Lois Mailou Pierre-"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b31iddOtlocdOtgovauthoritiesnamesn80028176"
+        },
+        {
+          "@id": "_:b39iddOtlocdOtgovauthoritiesnamesn80028176"
+        }
+      ]
+    },
+    {
+      "@id": "_:b31iddOtlocdOtgovauthoritiesnamesn80028176",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n80028176"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1980-04-23T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn80028176",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Pierre-Noël, Lois Mailou"
+        }
+      ]
+    },
+    {
+      "@id": "_:b39iddOtlocdOtgovauthoritiesnamesn80028176",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n80028176"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/pst"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2020-02-07T07:34:39"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "_:b17iddOtlocdOtgovauthoritiesnamesn94098321",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n94098321"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/ocolc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2002-02-09T07:19:42"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "_:b9iddOtlocdOtgovauthoritiesnamesn94098321",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n94098321"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1994-10-13T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n94098321",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Koger, Dorothy Parker"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++94098321#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b9iddOtlocdOtgovauthoritiesnamesn94098321"
+        },
+        {
+          "@id": "_:b17iddOtlocdOtgovauthoritiesnamesn94098321"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n97062499",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Kyles, Josephine Humbles, 1900-"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++97062499#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b9iddOtlocdOtgovauthoritiesnamesn97062499"
+        }
+      ]
+    },
+    {
+      "@id": "_:b9iddOtlocdOtgovauthoritiesnamesn97062499",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n97062499"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1997-06-18T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b27iddOtlocdOtgovauthoritiesnamesn2005019131",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n2005019131"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2005-03-16T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b12iddOtlocdOtgovauthoritiesnamesn2005019131",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Pope, Annie Turnbo, 1869-1957"
+        }
+      ]
+    },
+    {
+      "@id": "_:b35iddOtlocdOtgovauthoritiesnamesn2005019131",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n2005019131"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/ic"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2011-07-23T07:49:38"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn2005019131",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Turnbo, Annie Minerva, 1869-1957"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n2005019131",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Malone, Annie T., 1869-1957"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn2005019131"
+        },
+        {
+          "@id": "_:b12iddOtlocdOtgovauthoritiesnamesn2005019131"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn+2005019131#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q4769371"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1607882"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1607882"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q4769371"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Turnbo, Annie Minerva, 1869-1957"
+        },
+        {
+          "@value": "Pope, Annie Turnbo, 1869-1957"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b27iddOtlocdOtgovauthoritiesnamesn2005019131"
+        },
+        {
+          "@id": "_:b35iddOtlocdOtgovauthoritiesnamesn2005019131"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn50034273",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Murray, Anna Pauline, 1910-1985"
+        }
+      ]
+    },
+    {
+      "@id": "_:b29iddOtlocdOtgovauthoritiesnamesn50034273",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n50034273"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/gvas"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2022-02-09T06:46:10"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n50034273",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Murray, Pauli, 1910-1985"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn50034273"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#semanticRelation": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no2020050186"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++50034273#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://id.worldcat.org/fast/11564"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q7154879"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/11564"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q7154879"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Murray, Anna Pauline, 1910-1985"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b21iddOtlocdOtgovauthoritiesnamesn50034273"
+        },
+        {
+          "@id": "_:b29iddOtlocdOtgovauthoritiesnamesn50034273"
+        }
+      ]
+    },
+    {
+      "@id": "_:b21iddOtlocdOtgovauthoritiesnamesn50034273",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n50034273"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1980-07-17T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn86108086",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Settle, Martha, 1916-2008"
+        }
+      ]
+    },
+    {
+      "@id": "_:b18iddOtlocdOtgovauthoritiesnamesn86108086",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n86108086"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1986-08-13T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b26iddOtlocdOtgovauthoritiesnamesn86108086",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n86108086"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dhums"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2015-05-25T07:36:17"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n86108086",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Putney, Martha S., 1916-2008"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn86108086"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++86108086#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q6774559"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q6774559"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Settle, Martha, 1916-2008"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b18iddOtlocdOtgovauthoritiesnamesn86108086"
+        },
+        {
+          "@id": "_:b26iddOtlocdOtgovauthoritiesnamesn86108086"
+        }
+      ]
+    },
+    {
+      "@id": "_:b23iddOtlocdOtgovauthoritiesnamesn84150479",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n84150479"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/nn"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2022-07-14T06:45:33"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n84150479",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Ringgold, Faith"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++84150479#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://id.worldcat.org/fast/135015"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q5431220"
+        },
+        {
+          "@id": "http://vocab.getty.edu/ulan/500063866"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/135015"
+        },
+        {
+          "@id": "http://vocab.getty.edu/ulan/500063866"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q5431220"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b15iddOtlocdOtgovauthoritiesnamesn84150479"
+        },
+        {
+          "@id": "_:b23iddOtlocdOtgovauthoritiesnamesn84150479"
+        }
+      ]
+    },
+    {
+      "@id": "_:b15iddOtlocdOtgovauthoritiesnamesn84150479",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n84150479"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1984-08-21T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n97062023",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Roberts, Malkia"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn97062023"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++97062023#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q28608433"
+        },
+        {
+          "@id": "http://vocab.getty.edu/ulan/500122108"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/393367"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/393367"
+        },
+        {
+          "@id": "http://vocab.getty.edu/ulan/500122108"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q28608433"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Roberts, Lucille D."
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b22iddOtlocdOtgovauthoritiesnamesn97062023"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn97062023",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Roberts, Lucille D."
+        }
+      ]
+    },
+    {
+      "@id": "_:b22iddOtlocdOtgovauthoritiesnamesn97062023",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n97062023"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1997-06-17T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n96061618",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Roundtree, Dovey Johnson, 1914-2018"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn96061618"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++96061618#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q5302560"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q5302560"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Johnson, Dovey Mae, 1914-2018"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b18iddOtlocdOtgovauthoritiesnamesn96061618"
+        },
+        {
+          "@id": "_:b26iddOtlocdOtgovauthoritiesnamesn96061618"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn96061618",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Johnson, Dovey Mae, 1914-2018"
+        }
+      ]
+    },
+    {
+      "@id": "_:b18iddOtlocdOtgovauthoritiesnamesn96061618",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n96061618"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1996-06-22T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b26iddOtlocdOtgovauthoritiesnamesn96061618",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n96061618"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2018-05-22T11:10:21"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "_:b23iddOtlocdOtgovauthoritiesnamesn50024303",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n50024303"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/kyu"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2020-12-26T07:00:17"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n50024303",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Staupers, Mabel Keaton, 1890-1989"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++50024303#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://id.worldcat.org/fast/1899228"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/8008"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q6721463"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1899228"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/8008"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q6721463"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b15iddOtlocdOtgovauthoritiesnamesn50024303"
+        },
+        {
+          "@id": "_:b23iddOtlocdOtgovauthoritiesnamesn50024303"
+        }
+      ]
+    },
+    {
+      "@id": "_:b15iddOtlocdOtgovauthoritiesnamesn50024303",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n50024303"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1980-05-16T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/no2021020660",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Thomas, Miriam, 1956-"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesno2021020660"
+        },
+        {
+          "@id": "_:b12iddOtlocdOtgovauthoritiesnamesno2021020660"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cno2021020660#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Thomas, Miriam Yvette, 1956-"
+        },
+        {
+          "@value": "Norris, Miriam Thomas, 1956-"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b23iddOtlocdOtgovauthoritiesnamesno2021020660"
+        },
+        {
+          "@id": "_:b31iddOtlocdOtgovauthoritiesnamesno2021020660"
+        }
+      ]
+    },
+    {
+      "@id": "_:b23iddOtlocdOtgovauthoritiesnamesno2021020660",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no2021020660"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/ncu"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2021-02-20T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b12iddOtlocdOtgovauthoritiesnamesno2021020660",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Norris, Miriam Thomas, 1956-"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesno2021020660",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Thomas, Miriam Yvette, 1956-"
+        }
+      ]
+    },
+    {
+      "@id": "_:b31iddOtlocdOtgovauthoritiesnamesno2021020660",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no2021020660"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/ncu"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2021-02-21T07:00:13"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "_:b42iddOtlocdOtgovauthoritiesnamesn89669934",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n89669934"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/kyu"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2020-12-24T11:30:34"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "_:b17iddOtlocdOtgovauthoritiesnamesn89669934",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Walker, Sarah Breedlove, 1867-1919"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n89669934",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Walker, C. J., Madam, 1867-1919"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn89669934"
+        },
+        {
+          "@id": "_:b12iddOtlocdOtgovauthoritiesnamesn89669934"
+        },
+        {
+          "@id": "_:b17iddOtlocdOtgovauthoritiesnamesn89669934"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++89669934#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q447716"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/261468"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/261468"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q447716"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Breedlove, Sarah, 1867-1919"
+        },
+        {
+          "@value": "Walker, Madam, 1867-1919"
+        },
+        {
+          "@value": "Walker, Sarah Breedlove, 1867-1919"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b34iddOtlocdOtgovauthoritiesnamesn89669934"
+        },
+        {
+          "@id": "_:b42iddOtlocdOtgovauthoritiesnamesn89669934"
+        }
+      ]
+    },
+    {
+      "@id": "_:b34iddOtlocdOtgovauthoritiesnamesn89669934",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n89669934"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1989-12-07T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn89669934",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Breedlove, Sarah, 1867-1919"
+        }
+      ]
+    },
+    {
+      "@id": "_:b12iddOtlocdOtgovauthoritiesnamesn89669934",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Walker, Madam, 1867-1919"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n92092977",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Burroughs, Nannie Helen, 1879-1961"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++92092977#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q6963837"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/309844"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1797688"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1797688"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/309844"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q6963837"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b15iddOtlocdOtgovauthoritiesnamesn92092977"
+        },
+        {
+          "@id": "_:b23iddOtlocdOtgovauthoritiesnamesn92092977"
+        }
+      ]
+    },
+    {
+      "@id": "_:b15iddOtlocdOtgovauthoritiesnamesn92092977",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n92092977"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1992-09-17T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b23iddOtlocdOtgovauthoritiesnamesn92092977",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n92092977"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/ien"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2015-04-18T07:38:40"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "_:b13iddOtlocdOtgovauthoritiesnamesno2009081088",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no2009081088"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/oakuav"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2009-05-26T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b21iddOtlocdOtgovauthoritiesnamesno2009081088",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no2009081088"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/oakuav"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2009-05-27T05:29:28"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/no2009081088",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Cowan, Louis G., 1909-1976"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cno2009081088#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q61350152"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1932362"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1932362"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q61350152"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b13iddOtlocdOtgovauthoritiesnamesno2009081088"
+        },
+        {
+          "@id": "_:b21iddOtlocdOtgovauthoritiesnamesno2009081088"
+        }
+      ]
+    },
+    {
+      "@id": "_:b12iddOtlocdOtgovauthoritiesnamesno90024847",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Ferebee, Dorothy Boulding, d. 1980"
+        }
+      ]
+    },
+    {
+      "@id": "_:b29iddOtlocdOtgovauthoritiesnamesno90024847",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no90024847"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/clu"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1990-11-16T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesno90024847",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Boulding, Dorothy Celeste, 1898?-1980"
+        }
+      ]
+    },
+    {
+      "@id": "_:b37iddOtlocdOtgovauthoritiesnamesno90024847",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no90024847"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/kyu"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2020-10-19T07:00:15"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/no90024847",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Ferebee, Dorothy Boulding, 1898-1980"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesno90024847"
+        },
+        {
+          "@id": "_:b12iddOtlocdOtgovauthoritiesnamesno90024847"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cno+90024847#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q4793663"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/278231"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1802167"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1802167"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/278231"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q4793663"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Boulding, Dorothy Celeste, 1898?-1980"
+        },
+        {
+          "@value": "Ferebee, Dorothy Boulding, d. 1980"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b29iddOtlocdOtgovauthoritiesnamesno90024847"
+        },
+        {
+          "@id": "_:b37iddOtlocdOtgovauthoritiesnamesno90024847"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n97061830",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Green, Susie, 1898-1979"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++97061830#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b9iddOtlocdOtgovauthoritiesnamesn97061830"
+        }
+      ]
+    },
+    {
+      "@id": "_:b9iddOtlocdOtgovauthoritiesnamesn97061830",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n97061830"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1997-06-17T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b17iddOtlocdOtgovauthoritiesnamesno2021106459",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no2021106459"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/ku"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2021-09-10T06:45:16"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/no2021106459",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Lyle, Ethel Hedgeman, 1887-1950"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cno2021106459#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b9iddOtlocdOtgovauthoritiesnamesno2021106459"
+        },
+        {
+          "@id": "_:b17iddOtlocdOtgovauthoritiesnamesno2021106459"
+        }
+      ]
+    },
+    {
+      "@id": "_:b9iddOtlocdOtgovauthoritiesnamesno2021106459",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/no2021106459"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/ku"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2021-09-09T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b27iddOtlocdOtgovauthoritiesnamesn2005019131",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n2005019131"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2005-03-16T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b12iddOtlocdOtgovauthoritiesnamesn2005019131",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Pope, Annie Turnbo, 1869-1957"
+        }
+      ]
+    },
+    {
+      "@id": "_:b35iddOtlocdOtgovauthoritiesnamesn2005019131",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n2005019131"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/ic"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2011-07-23T07:49:38"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn2005019131",
+      "@type": [
+        "http://www.w3.org/2008/05/skos-xl#Label"
+      ],
+      "http://www.w3.org/2008/05/skos-xl#literalForm": [
+        {
+          "@value": "Turnbo, Annie Minerva, 1869-1957"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n2005019131",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Malone, Annie T., 1869-1957"
+        }
+      ],
+      "http://www.w3.org/2008/05/skos-xl#altLabel": [
+        {
+          "@id": "_:b7iddOtlocdOtgovauthoritiesnamesn2005019131"
+        },
+        {
+          "@id": "_:b12iddOtlocdOtgovauthoritiesnamesn2005019131"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn+2005019131#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q4769371"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1607882"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1607882"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q4769371"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#altLabel": [
+        {
+          "@value": "Turnbo, Annie Minerva, 1869-1957"
+        },
+        {
+          "@value": "Pope, Annie Turnbo, 1869-1957"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b27iddOtlocdOtgovauthoritiesnamesn2005019131"
+        },
+        {
+          "@id": "_:b35iddOtlocdOtgovauthoritiesnamesn2005019131"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n98061355",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Mason, Vivian Carter"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++98061355#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://id.worldcat.org/fast/1544123"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/1544123"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b11iddOtlocdOtgovauthoritiesnamesn98061355"
+        }
+      ]
+    },
+    {
+      "@id": "_:b11iddOtlocdOtgovauthoritiesnamesn98061355",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n98061355"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1998-07-08T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b13iddOtlocdOtgovauthoritiesnamesn78057602",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n78057602"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1978-08-21T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "_:b21iddOtlocdOtgovauthoritiesnamesn78057602",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n78057602"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "2012-05-01T10:24:55"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "revised"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n78057602",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Sloan, Edith Barksdale"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++78057602#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#closeMatch": [
+        {
+          "@id": "http://id.worldcat.org/fast/25968"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q105871722"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/25968"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q105871722"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b13iddOtlocdOtgovauthoritiesnamesn78057602"
+        },
+        {
+          "@id": "_:b21iddOtlocdOtgovauthoritiesnamesn78057602"
+        }
+      ]
+    },
+    {
+      "@id": "_:b9iddOtlocdOtgovauthoritiesnamesn96061157",
+      "@type": [
+        "http://purl.org/vocab/changeset/schema#ChangeSet"
+      ],
+      "http://purl.org/vocab/changeset/schema#subjectOfChange": [
+        {
+          "@id": "http://id.loc.gov/authorities/names/n96061157"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#creatorName": [
+        {
+          "@id": "http://id.loc.gov/vocabulary/organizations/dlc"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#createdDate": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
+          "@value": "1996-06-21T00:00:00"
+        }
+      ],
+      "http://purl.org/vocab/changeset/schema#changeReason": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#string",
+          "@value": "new"
+        }
+      ]
+    },
+    {
+      "@id": "http://id.loc.gov/authorities/names/n96061157",
+      "@type": [
+        "http://www.w3.org/2004/02/skos/core#Concept"
+      ],
+      "http://www.w3.org/2004/02/skos/core#prefLabel": [
+        {
+          "@value": "Thomas, Miriam Higgins, 1920-"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#exactMatch": [
+        {
+          "@id": "http://viaf.org/viaf/sourceID/LC%7Cn++96061157#skos:Concept"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#inScheme": [
+        {
+          "@id": "http://id.loc.gov/authorities/names"
+        }
+      ],
+      "http://www.w3.org/2004/02/skos/core#changeNote": [
+        {
+          "@id": "_:b9iddOtlocdOtgovauthoritiesnamesn96061157"
+        }
+      ]
+    }
+  ]

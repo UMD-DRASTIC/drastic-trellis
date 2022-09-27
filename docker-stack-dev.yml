@@ -3,39 +3,57 @@ services:
 #   trellis:
 #       - 80:8080
 
-  cassandra-1:
-    image: cassandra:3.11.11
-    user: 1000:1000
+  # cassandra-1:
+  #   image: cassandra:3.11.11
+  #   user: 1000:1000
+  #   environment:
+  #     CASSANDRA_BROADCAST_ADDRESS: localhost
+  #     CASSANDRA_LISTEN_ADDRESS: tasks.cassandra-1
+  #   ports:
+  #     - target: 9042
+  #       published: 9042
+  #       protocol: tcp
+  #       mode: host
+  #     - target: 7000
+  #       published: 7000
+  #       protocol: tcp
+  #       mode: host
+  #   volumes:
+  #     - ./docker_stack_vols/cassandra-data:/var/lib/cassandra
+  #   networks:
+  #     drastic:
+  #
+  # cassandra-init:
+  #   image: cassandra
+  #   depends_on:
+  #     - cassandra-1
+  #   deploy:
+  #     restart_policy:
+  #       condition: on-failure
+  #       delay: 10s
+  #   volumes:
+  #     - ./docker_stack_vols/config/trellis.cql:/trellis.cql
+  #   command: cqlsh cassandra-1 -f /trellis.cql
+  #   networks:
+  #     - drastic
+
+  postgresql:
+    image: postgres
+    hostname: postgresql
+    restart: always
     environment:
-      CASSANDRA_BROADCAST_ADDRESS: localhost
-      CASSANDRA_LISTEN_ADDRESS: tasks.cassandra-1
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_USER: trellis
+      PGDATA: /var/lib/postgresql/data/pgdata
     ports:
-      - target: 9042
-        published: 9042
+      - target: 5432
+        published: 5432
         protocol: tcp
         mode: host
-      - target: 7000
-        published: 7000
-        protocol: tcp
-        mode: host
-    volumes:
-      - ./docker_stack_vols/cassandra-data:/var/lib/cassandra
     networks:
       drastic:
-
-  cassandra-init:
-    image: cassandra
-    depends_on:
-      - cassandra-1
-    deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 10s
     volumes:
-      - ./docker_stack_vols/config/trellis.cql:/trellis.cql
-    command: cqlsh cassandra-1 -f /trellis.cql
-    networks:
-      - drastic
+      - ./docker_stack_vols/postgresql-data:/var/lib/postgresql/data
 
   zookeeper:
     image: zookeeper:3.4.9
@@ -136,7 +154,7 @@ services:
       - ./docker_stack_vols/elasticsearch-data:/usr/share/elasticsearch/data
     networks:
       drastic:
-              
+
 networks:
   drastic:
     driver: overlay

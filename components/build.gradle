@@ -55,7 +55,16 @@ dependencies {
     implementation("org.trellisldp:trellis-cache")
     implementation("org.trellisldp:trellis-cdi")
     implementation("org.trellisldp:trellis-constraint")
-    //implementation("org.trellisldp:trellis-file")
+    
+    // Metadata storage
+    implementation("io.quarkus:quarkus-agroal") // connection pooling
+    implementation("org.trellisldp:trellis-jdbc")  // TODO: trying file storage for dev.
+    implementation("io.quarkus:quarkus-flyway")
+    implementation("io.quarkus:quarkus-jdbc-postgresql")
+    
+    // Binary storage
+    implementation("org.trellisldp:trellis-file")
+        
     implementation("org.trellisldp:trellis-http")
     implementation("org.trellisldp:trellis-jena")
     implementation("org.trellisldp:trellis-jwt")
@@ -67,7 +76,7 @@ dependencies {
     implementation("org.trellisldp:trellis-webac")
 
     // Trellis storage
-    implementation("org.trellisldp.ext:trellis-cassandra:${trellisVersion}") //{
+    //implementation("org.trellisldp.ext:trellis-cassandra:${trellisVersion}") //{
         //exclude group: 'javax.annotation', module: 'javax.annotation-api'
         //exclude group: 'org.eclipse.microprofile.health', module: 'microprofile-health-api'
     //}
