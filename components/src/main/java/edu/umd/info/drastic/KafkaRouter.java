@@ -31,7 +31,7 @@ public class KafkaRouter {
 	
 	private static final Logger LOGGER = getLogger(KafkaRouter.class);
 	
-	@Incoming("trellis")
+	@Incoming("trellis-in")
 	@Broadcast
 	@Outgoing("broadcast")
 	public String broadcast(String payload) {
@@ -42,6 +42,7 @@ public class KafkaRouter {
     @Outgoing("objects-out")
 	@Acknowledgment(Acknowledgment.Strategy.PRE_PROCESSING)
     public Record<String, String> sendActivityStream(String payload) {
+		//LOGGER.warn("sending object msg: {}", payload);
 		JsonNode as;
 		try {
 			as = new ObjectMapper().readTree(payload);

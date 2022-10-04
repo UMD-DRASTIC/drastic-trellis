@@ -96,6 +96,7 @@ public class HAManifestProcessor {
 							Cell m = row.getCell(1);
 							if(m.getCellType() != CellType.STRING) continue;
 							md5Seen = true;
+							// FIXME: All manifest digests should really be held in that manifest's own graph.
 							addManifestDigest(filename, m.getStringCellValue().trim(), binaryLoc);
 						} catch(Exception e) {
 							if(md5Seen) return;

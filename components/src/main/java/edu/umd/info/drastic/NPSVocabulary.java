@@ -157,4 +157,44 @@ public class NPSVocabulary {
 			this.str = this.iri.getIRIString();
 		}
 	}
+	
+	public static final IRI SKOS_XL_NS = rdf.createIRI("http://www.w3.org/2008/05/skos-xl#");
+	public static enum SKOS_XL {
+		Label, altLabel, literalForm;
+		
+		public IRI iri;
+		public String str;
+		
+		SKOS_XL() {
+			this.iri = rdf.createIRI(SKOS_XL_NS.getIRIString()+this.name());
+			this.str = this.iri.getIRIString();
+		}
+	}
+	
+	public static final IRI SKOS_CORE_NS = rdf.createIRI("http://www.w3.org/2004/02/skos/core#");
+	public static enum SKOS {
+		Concept, prefLabel, exactMatch, closeMatch, inScheme, changeNote, editorial;
+		
+		public IRI iri;
+		public String str;
+		
+		SKOS() {
+			this.iri = rdf.createIRI(SKOS_CORE_NS.getIRIString()+this.name());
+			this.str = this.iri.getIRIString();
+		}
+	}
+	
+	public static final IRI DRASTIC_NS = rdf.createIRI("http://github.com/DRAS-TIC/drastic-trellis#");
+	public static enum DRASTIC_AGENTS {
+		crawler;
+		
+		public IRI iri;
+		public String str;
+		
+		DRASTIC_AGENTS() {
+			this.iri = rdf.createIRI(DRASTIC_NS.getIRIString()+this.name());
+			this.str = this.iri.getIRIString();
+		}
+	}
+	//http://www.w3.org/2004/02/skos/core#
 }

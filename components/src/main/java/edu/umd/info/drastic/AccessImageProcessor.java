@@ -55,8 +55,8 @@ public class AccessImageProcessor {
 
 	@Incoming("accessimage")
 	public void process(Record<String, String> record) {
-		LOGGER.debug("access image task: {}", record.key());
 		if (/* NPSFilenameUtil.isHierarchalConvention(record.key()) && */  record.key().endsWith(".tif")) {
+			LOGGER.debug("access image task: {}", record.key());
 			CompletableFuture.runAsync(() -> {
 				processImageFile(record.key());
 			}, executorService);

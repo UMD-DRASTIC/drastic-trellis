@@ -30,8 +30,7 @@ import org.slf4j.Logger;
 @ApplicationScoped
 public class LDPHttpUtil {
 	
-	@SuppressWarnings("unused")
-	private static final Logger LOGGER = getLogger(AccessImageProcessor.class);
+	private static final Logger LOGGER = getLogger(LDPHttpUtil.class);
 
     @Inject
     @ConfigProperty(name = "trellis.client-username", defaultValue = "")
@@ -100,7 +99,7 @@ public class LDPHttpUtil {
 				LOGGER.error("Got a failure when patching binary description: {}", response.statusCode());
 			}
 		} catch (IOException | InterruptedException | URISyntaxException e) {
-			LOGGER.error("Exception on digest patch", e);
+			LOGGER.error("Exception while patching graph {}\n{}", location, patch, e);
 		}
 	}
 }

@@ -1,8 +1,11 @@
 package edu.umd.info.drastic;
 
 import static edu.umd.info.drastic.LDPHttpUtil.getGraph;
+import static edu.umd.info.drastic.NPSVocabulary.DRASTIC_AGENTS.crawler;
 import static org.slf4j.LoggerFactory.getLogger;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -17,7 +20,12 @@ import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Message;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 import org.slf4j.Logger;
+import org.trellisldp.api.NotificationSerializationService;
+import org.trellisldp.common.SimpleNotification;
+import org.trellisldp.vocabulary.AS;
 import org.trellisldp.vocabulary.LDP;
+import org.trellisldp.vocabulary.PROV;
+import org.trellisldp.vocabulary.SKOS;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,6 +36,17 @@ import io.smallrye.reactive.messaging.kafka.api.OutgoingKafkaRecordMetadata;
  * This LDP container crawler performs a breadth-first crawl of the containment tree, generating
  * custom messages for each child object. It may be invoked via a message to the crawl queue and
  * uses this same queue to recurse into child containers. 
+ * 
+ * Example message:
+ * { 
+ *   "startUri": "startUri",
+ *   "depth": 10,
+ *   "kafkaTopic": "objects",
+ *   "options": {
+ *     "key": "string value"
+ *   }
+ * }
+ * 
  * @author jansen
  *
  */
@@ -37,6 +56,9 @@ public class KafkaContainerCrawler {
 	@Inject
 	@Channel("crawler-out")
 	Emitter<LDPCrawlRequest> emitter;
+	
+	@Inject
+	NotificationSerializationService serializer;
 	
 	@Outgoing("null")
 	@Incoming("crawler-in")
@@ -54,14 +76,23 @@ public class KafkaContainerCrawler {
 		OutgoingKafkaRecordMetadata<String> metadata = OutgoingKafkaRecordMetadata.<String> builder()
 			        .withTopic(req.kafkaTopic)
 			        .build();
-		Map<String, String> msg = req.options;
-		msg.put("iri", req.startUri);
 		String message;
-		try {
-			message = new ObjectMapper().writer().writeValueAsString(msg);
-		} catch (JsonProcessingException e) {
-			LOGGER.error("Error while encoding json", e);
-			return null;
+		if("objects".equals(req.kafkaTopic) || "new-binaries".equals(req.kafkaTopic)) {
+			// serialize as ActivityStream
+			SimpleNotification n = new SimpleNotification(req.startUri, crawler.iri, 
+					List.of(PROV.Activity, AS.Update), 
+					List.of(LDP.RDFSource, SKOS.Concept),
+					"etag:123456");
+			message = serializer.serialize(n);
+		} else {
+			Map<String, String> msg = req.options == null ? new HashMap<String, String>() : req.options;
+			msg.put("iri", req.startUri);
+			try {
+				message = new ObjectMapper().writer().writeValueAsString(msg);
+			} catch (JsonProcessingException e) {
+				LOGGER.error("Error while encoding json", e);
+				return null;
+			}
 		}
 		Message<String> result = Message.of(message).addMetadata(metadata);
 		return result;

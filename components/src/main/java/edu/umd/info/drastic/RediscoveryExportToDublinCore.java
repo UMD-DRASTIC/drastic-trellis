@@ -33,7 +33,6 @@ import edu.umd.info.drastic.NPSVocabulary.DCTERMS;
 import edu.umd.info.drastic.NPSVocabulary.ICMS;
 import edu.umd.info.drastic.NPSVocabulary.ICMS_LEVEL;
 import edu.umd.info.drastic.NPSVocabulary.PCDM;
-import io.smallrye.reactive.messaging.annotations.Blocking;
 
 /**
  * A {@link RouteBuilder} that forwards the Trellis object activity to Kafka.
@@ -55,12 +54,13 @@ public class RediscoveryExportToDublinCore {
 	 * @param record
 	 */
 	@Incoming("icms2dc")
-	@Blocking("trellis-suppliers")
+	//@Blocking("trellis-suppliers")
 	@Acknowledgment(Strategy.PRE_PROCESSING)
 	public void process(String activityStream) {
 		try {
 			JsonNode js = new ObjectMapper().readTree(activityStream);
 			IRI iri = rdf.createIRI(js.get("object").get("id").asText());
+			LOGGER.info("Processing JSON msg: {}", iri.getIRIString());
 			// FIXME: lack of trailing slash is a *bug* that may be fixed
 			boolean isRE = StreamSupport.stream(((ArrayNode) js.at("/object/type")).spliterator(), false).map(JsonNode::asText)
 					.anyMatch(t -> ICMS.RediscoveryExport.str.equals(t));
@@ -74,7 +74,7 @@ public class RediscoveryExportToDublinCore {
 					Graph g = createStatements(iri, priorGraph);
 					patchGraph(g, iri.getIRIString());
 				} else {
-					LOGGER.warn("Found a resource matching \"/description/*\" w/o RediscoveryExport predicate: {}",
+					LOGGER.warn("Found  a resource matching \"/description/*\" w/o RediscoveryExport predicate: {}",
 							iri);
 				}
 			}

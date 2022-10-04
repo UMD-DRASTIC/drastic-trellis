@@ -75,6 +75,7 @@ public class GraphToESIndexer {
 	@Blocking("elasticsearch-suppliers")
 	@Acknowledgment(Strategy.PRE_PROCESSING)
 	public void processNewGraph(String msg) {
+		LOGGER.info("processing graph to ES: {}", msg);
 		//if(msg.contains("BX")) LOGGER.debug("processing box graph uri: {}", msg);
 		URI graphUri = URI.create(msg);
 		if(skipPaths.contains(graphUri.getPath())) {

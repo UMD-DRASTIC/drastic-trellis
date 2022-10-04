@@ -1,5 +1,6 @@
 #!/bin/sh
 rm --preserve-root -rf docker_stack_vols/cassandra-data/*
+sudo rm --preserve-root -rf docker_stack_vols/postgresql-data/pgdata/*
 rm --preserve-root -rf docker_stack_vols/elasticsearch-data/*
 rm --preserve-root -rf docker_stack_vols/fuseki-data/DB2/*
 rm --preserve-root -rf docker_stack_vols/kafka-data/*

@@ -17,11 +17,9 @@ class LDPCrawlRequest {
 		this.depth = depth;
 		this.kafkaTopic = kafkaTopic;
 		this.options = options;
+		
 	}
 	
-	
-
-    
     @JsonAnySetter
     public void addOptions(String k, String v) {
         options.put(k, v);
@@ -35,4 +33,5 @@ class LDPCrawlRequest {
                 ", optionsJSON=" + options +
                 '}';
     }
+    
 }

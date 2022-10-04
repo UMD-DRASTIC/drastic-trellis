@@ -23,6 +23,8 @@ import javax.enterprise.inject.Produces;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import org.trellisldp.api.MementoService;
+import org.trellisldp.api.NoopMementoService;
 import org.trellisldp.common.DefaultTimemapGenerator;
 import org.trellisldp.common.TimemapGenerator;
 
@@ -35,6 +37,9 @@ public class TrellisApplication extends Application {
 
     @Produces
     TimemapGenerator timemapGenerator = new DefaultTimemapGenerator();
+    
+    @Produces
+    MementoService mementoService = new NoopMementoService();
     
     @PostConstruct
     void init() {
