@@ -55,7 +55,7 @@ public class NPSVocabulary {
 	
 	public static final IRI NPS_NS = rdf.createIRI("https://example.nps.gov/2021/nps-workflow#");
 	public static enum NPS {
-		containsGraph, MissingPageFile, path, hasAccess, hasThumbnail;
+		containsGraph, MissingPageFile, path, hasAccess, hasThumbnail, hasProposedEntity, entityType, entityText;
 		
 		public IRI iri;
 		public String str;
@@ -196,5 +196,17 @@ public class NPSVocabulary {
 			this.str = this.iri.getIRIString();
 		}
 	}
-	//http://www.w3.org/2004/02/skos/core#
+	
+	public static final IRI MADS_NS = rdf.createIRI("http://www.loc.gov/mads/rdf/v1#");
+	public static enum MADS {
+		PersonalName, CorporateName, GeographicName;
+		
+		public IRI iri;
+		public String str;
+		
+		MADS() {
+			this.iri = rdf.createIRI(DRASTIC_NS.getIRIString()+this.name());
+			this.str = this.iri.getIRIString();
+		}
+	}
 }

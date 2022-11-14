@@ -4,9 +4,7 @@ import static edu.umd.info.drastic.LDPHttpUtil.getGraph;
 import static edu.umd.info.drastic.NPSVocabulary.DRASTIC_AGENTS.crawler;
 import static org.slf4j.LoggerFactory.getLogger;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -26,9 +24,6 @@ import org.trellisldp.vocabulary.AS;
 import org.trellisldp.vocabulary.LDP;
 import org.trellisldp.vocabulary.PROV;
 import org.trellisldp.vocabulary.SKOS;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.smallrye.reactive.messaging.kafka.api.OutgoingKafkaRecordMetadata;
 
@@ -85,14 +80,7 @@ public class KafkaContainerCrawler {
 					"etag:123456");
 			message = serializer.serialize(n);
 		} else {
-			Map<String, String> msg = req.options == null ? new HashMap<String, String>() : req.options;
-			msg.put("iri", req.startUri);
-			try {
-				message = new ObjectMapper().writer().writeValueAsString(msg);
-			} catch (JsonProcessingException e) {
-				LOGGER.error("Error while encoding json", e);
-				return null;
-			}
+			message = req.startUri;
 		}
 		Message<String> result = Message.of(message).addMetadata(metadata);
 		return result;

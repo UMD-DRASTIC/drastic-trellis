@@ -102,6 +102,18 @@ services:
 #    networks:
 #      drastic:
 
+  kafdrop:
+    image: obsidiandynamics/kafdrop
+    networks:
+      drastic:
+    ports:
+      - target: 9000
+        published: 9000
+        protocol: tcp
+        mode: host
+    environment:
+      KAFKA_BROKERCONNECT: kafka:9092
+
   fuseki:
     image: gregjan/fuseki:latest
     command: [ "--tdb2", "--update", "--loc", "databases/DB2", "/ds" ]

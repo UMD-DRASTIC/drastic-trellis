@@ -12,6 +12,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import javax.inject.Inject;
@@ -19,6 +20,7 @@ import javax.inject.Inject;
 import org.apache.commons.rdf.api.Dataset;
 import org.apache.commons.rdf.api.Graph;
 import org.apache.commons.rdf.api.IRI;
+import org.apache.commons.rdf.api.Literal;
 import org.apache.commons.rdf.api.RDF;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.reactive.messaging.Acknowledgment;
@@ -36,7 +38,7 @@ import edu.umd.info.drastic.NPSVocabulary.TIKA;
 import io.smallrye.reactive.messaging.annotations.Blocking;
 
 /**
- * The NamedEntityExtractor is responsible for extracting named entity phrases from archival descriptions.
+ * This class is responsible for extracting named entity phrases from archival descriptions.
  * Description full text is built from ICMS triples with certain exclusions. Entity results are stored in
  * their own set of named entity triples.
  * 
@@ -47,8 +49,8 @@ import io.smallrye.reactive.messaging.annotations.Blocking;
  * @author jansen
  *
  */
-public class NamedEntityExtractor {
-	private static final Logger LOGGER = getLogger(NamedEntityExtractor.class);
+public class DescriptionNamedEntityExtractor {
+	private static final Logger LOGGER = getLogger(DescriptionNamedEntityExtractor.class);
 	
 	private static final RDF rdf = RDFFactory.getInstance();
     
@@ -56,11 +58,12 @@ public class NamedEntityExtractor {
     @ConfigProperty(name = "trellis.tika-baseurl", defaultValue = "http://tika:9998")
     URI tikaBaseURL;
     
-	@Incoming("ner-in")
+	@Incoming("desc-ner-in")
 	@Blocking("tika")
 	@Acknowledgment(Strategy.PRE_PROCESSING)
 	public void processNewGraph(String msg) {
 		LOGGER.info("Got NER request for: {}", msg);
+		if(!DrasticPaths.descriptions.matches(msg)) return;
 		IRI iri = rdf.createIRI(msg);
 		Graph priorGraph = getGraph(iri.getIRIString());
 		if (priorGraph.contains(iri, org.trellisldp.vocabulary.RDF.type, ICMS.RediscoveryExport.iri)) {
@@ -70,6 +73,7 @@ public class NamedEntityExtractor {
 				.filter(n -> {
 					String pred = n.getPredicate().getIRIString();
 					if(!pred.startsWith(ICMS_NS.getIRIString())) return false;
+					if(!(n.getObject() instanceof Literal)) return false;
 					ICMS predEnum = null;
 					try {
 						predEnum = ICMS.valueOf(pred.substring(ICMS_NS.getIRIString().length()));
@@ -78,16 +82,22 @@ public class NamedEntityExtractor {
 					}
 					return !ICMS_FULLTEXT_EXCLUSIONS.contains(predEnum);
 					})
-				.map(n -> { return n.getObject().ntriplesString(); })
+				.map(n -> {
+					Literal l = (Literal)n.getObject();
+					return l.getLexicalForm();
+					})
 				.collect(Collectors.joining(" "));
 			try {
-				String json = tikaNER(fulltext);  
+				String json = tikaNER(fulltext);
 				JsonNode js = new ObjectMapper().readTree(json);
 				for(TIKA key : TIKA.values()) {
 					if(js.has(key.name())) {
 						for(String phrase : js.findValuesAsText(key.name())) {
 							if(phrase.trim().length() > 0) {
-								g.add(iri, key.iri, rdf.createLiteral(phrase));
+								IRI b = rdf.createIRI("urn:uuid:"+UUID.randomUUID().toString());
+								g.add(iri, NPSVocabulary.NPS.hasProposedEntity.iri, b);
+								g.add(b, NPSVocabulary.NPS.entityType.iri, key.iri);
+								g.add(b, NPSVocabulary.NPS.entityText.iri, rdf.createLiteral(phrase));
 							}
 						}
 					}
@@ -95,7 +105,7 @@ public class NamedEntityExtractor {
 				if(g.size() > 0) patchGraph(g, iri.getIRIString());
 			} catch (IOException | InterruptedException e) {
 				LOGGER.warn("Something went wrong performing NER", e);
-			} 
+			}
 		} else {
 			LOGGER.warn("Found a resource matching \"/description/*\" w/o RediscoveryExport predicate: {}",
 					iri);

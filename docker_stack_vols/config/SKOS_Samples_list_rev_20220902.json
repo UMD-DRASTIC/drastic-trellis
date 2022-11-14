@@ -80,7 +80,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n85022961",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName",        "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -150,7 +150,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n79144645",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -346,7 +346,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/no90024764",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -423,7 +423,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n00010499",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -547,7 +547,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n88218570",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -668,7 +668,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/no90024847",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -733,7 +733,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/no2019015042",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -826,7 +826,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n98061355",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -916,7 +916,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/nr2002026204",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -1002,7 +1002,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n80130042",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -1157,7 +1157,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/no90025256",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -1256,7 +1256,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n78057602",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -1299,7 +1299,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n94117123",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -1381,7 +1381,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n97061930",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -1449,7 +1449,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n96058750",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -1514,7 +1514,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n97061606",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -1667,7 +1667,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/no89020119",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -1707,7 +1707,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n97061564",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -1838,7 +1838,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n96058992",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -1891,7 +1891,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n97061830",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -1945,7 +1945,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n96061183",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -2059,7 +2059,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n88172469",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -2224,7 +2224,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n96061767",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -2261,7 +2261,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n80028176",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -2457,7 +2457,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n94098321",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -2486,7 +2486,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n97062499",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -2618,7 +2618,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n2005019131",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -2716,7 +2716,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n50034273",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -2869,7 +2869,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n86108086",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -2944,7 +2944,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n84150479",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -3021,7 +3021,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n97062023",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -3116,7 +3116,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n96061618",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -3258,7 +3258,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n50024303",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -3335,7 +3335,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/no2021020660",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -3497,7 +3497,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n89669934",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -3612,7 +3612,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n92092977",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -3773,7 +3773,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/no2009081088",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -3894,7 +3894,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/no90024847",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -3959,7 +3959,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n97061830",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -4041,7 +4041,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/no2021106459",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -4176,7 +4176,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n2005019131",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -4235,7 +4235,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n98061355",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -4353,7 +4353,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n78057602",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {
@@ -4424,7 +4424,7 @@
     {
       "@id": "http://id.loc.gov/authorities/names/n96061157",
       "@type": [
-        "http://www.w3.org/2004/02/skos/core#Concept"
+        "http://www.w3.org/2004/02/skos/core#Concept", "http://www.loc.gov/mads/rdf/v1#PersonalName"
       ],
       "http://www.w3.org/2004/02/skos/core#prefLabel": [
         {

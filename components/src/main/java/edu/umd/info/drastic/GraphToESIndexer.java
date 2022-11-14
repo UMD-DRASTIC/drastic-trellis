@@ -205,6 +205,7 @@ public class GraphToESIndexer {
 			}
 			return StreamSupport.stream(as.at("/results/bindings").findValues("s").spliterator(), true)
 				.filter(s -> { return "uri".equals(s.get("type").asText()); } )
+				.filter(s  -> { return s.get("value").asText().startsWith("http"); } )
 				.map(s -> {	return URI.create(s.get("value").asText()); });
 		} catch (IOException | InterruptedException e) {
 			LOGGER.error("Cannot get triples for {}", iri, e);

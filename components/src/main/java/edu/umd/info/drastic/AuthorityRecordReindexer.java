@@ -19,7 +19,6 @@ import javax.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.reactive.messaging.Acknowledgment;
 import org.eclipse.microprofile.reactive.messaging.Acknowledgment.Strategy;
-import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.slf4j.Logger;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -31,29 +30,27 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.smallrye.reactive.messaging.annotations.Blocking;
 
 /**
- * The GraphToESIndexer is responsible for indexing things in Elasticsearch
- * whenever graphs are updated or added to the triple store. Since the triples
- * for any subject may be spread over many named graphs in LDP, the indexer
- * first gathers the list of relevant subjects from the updated graph, then
- * builds the index document from statements about those subjects from any named graph.
- * 
+ * The AuthorityRecordReindexer is responsible for reindexing all skos:Concepts in Elasticsearch
+ * when requested. This reindexer searches for all skos:Concepts in the triple store.
+ *
  * @author jansen
  *
  */
-public class AuthorityRecordsESIndexer {
-	private static final Logger LOGGER = getLogger(AuthorityRecordsESIndexer.class);
+@Deprecated
+public class AuthorityRecordReindexer {
+	private static final Logger LOGGER = getLogger(AuthorityRecordReindexer.class);
 
     @Inject
     @ConfigProperty(name = "trellis.triplestore-query-url", defaultValue = "http://localhost:3030/ds/query")
     URI triplestoreQueryUrl;
-    
+
     @Inject
     @ConfigProperty(name = "trellis.elasticsearch-url", defaultValue = "http://localhost:9200/")
     URI elasticSearchUrl;
-    
+
     final JsonNodeFactory factory = JsonNodeFactory.instance;
-    
-	@Incoming("elasticsearch-authrec-in")
+
+	//@Incoming("authrec-index")
 	@Blocking("elasticsearch-suppliers")
 	@Acknowledgment(Strategy.PRE_PROCESSING)
 	public void run(String msg) {
@@ -73,7 +70,9 @@ public class AuthorityRecordsESIndexer {
 				action.set("index", factory.objectNode()
 						.<ObjectNode>set("_id", factory.textNode(id)).set("_index", factory.textNode("authority-records")));
 				ObjectNode source = factory.objectNode();
-				source.set("id", factory.textNode(id));
+				source.set("id", factory.textNode(id));  // id of group is id of SKOS Concept
+				
+				// get labels and prefLabel for the group
 				ArrayNode labels = factory.arrayNode();
 				s.getValue().forEach( l -> {
 					if(l.has("pref")) {
@@ -84,20 +83,33 @@ public class AuthorityRecordsESIndexer {
 					}
 				});
 				source.set("labels", labels);
+				
+				// Get type by path convention
+				String graph = s.getValue().get(0).get("g").get("value").asText();
+				
+				if(graph.contains("/person/")) {
+					source.set("type", factory.textNode("person"));
+				} else if(graph.contains("/organization/")) {
+					source.set("type", factory.textNode("organization"));
+				} else if(graph.contains("/place/")) {
+					source.set("type", factory.textNode("place"));
+				} else {
+					source.set("type", factory.textNode("concept"));
+				}
 				return Arrays.asList(action, source);
 			})
-			.flatMap(list -> list.stream()).<StringBuilder>collect(StringBuilder::new, 
+			.flatMap(list -> list.stream()).<StringBuilder>collect(StringBuilder::new,
 					(b, x) -> {	b.append(x); b.append("\n"); },
 					(a, b) -> {	a.append(b.toString()); }).toString();
 		postElasticDocument(es_bulk);
 	}
 
 	private JsonNode getAuthorityRecords() {
-		String query = "select ?id ?pref ?label WHERE { GRAPH ?g { " +
+		String query = "select ?g ?id ?pref ?label WHERE { GRAPH ?g { " +
 				"?id a <http://www.w3.org/2004/02/skos/core#Concept> . " +
 				"{ ?id <http://www.w3.org/2004/02/skos/core#prefLabel> ?pref . } " +
 				"UNION " +
-				"{ ?id <http://www.w3.org/2008/05/skos-xl#altLabel> ?alt . " + 
+				"{ ?id <http://www.w3.org/2008/05/skos-xl#altLabel> ?alt . " +
 				"?alt <http://www.w3.org/2008/05/skos-xl#literalForm> ?label . } " +
 				"} }";
 		try {
@@ -113,7 +125,7 @@ public class AuthorityRecordsESIndexer {
 			throw new CompletionException(e);
 		}
 	}
-	
+
 	private String postElasticDocument(String body) {
 		LOGGER.debug("Bulk ES post: \n{}", body);
 	    URI uri = URI.create(this.elasticSearchUrl + "/_bulk");

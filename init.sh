@@ -67,7 +67,22 @@ curl -v -X POST \
     -H "Slug: name-authority" \
     http://localhost:9090
 
+curl -v -X POST \
+    -H "Link: <http://www.w3.org/ns/ldp#BasicContainer>; rel=\"type\"" \
+    -H "Slug: person" \
+    http://localhost:9090/name-authority/
+
+curl -v -X POST \
+    -H "Link: <http://www.w3.org/ns/ldp#BasicContainer>; rel=\"type\"" \
+    -H "Slug: organization" \
+    http://localhost:9090/name-authority/
+
+curl -v -X POST \
+    -H "Link: <http://www.w3.org/ns/ldp#BasicContainer>; rel=\"type\"" \
+    -H "Slug: place" \
+    http://localhost:9090/name-authority/
+
 curl -v -X PUT --data "@docker_stack_vols/config/SKOS_Samples_list_rev_20220902.json" \
      -H "Link: <http://www.w3.org/ns/ldp#RDFSource>; rel=\"type\"" \
      -H "Content-Type: application/ld+json" \
-     http://localhost:9090/name-authority/SKOS_Samples.json
+     http://localhost:9090/name-authority/person/LOC_SKOS_Subset.json

@@ -70,3 +70,14 @@ Then you can reach the Trellis LDP service:
 ```
 $ curl -v 0.0.0.0:8080
 ```
+
+### Monitoring Kafka Broker
+This can be helpful in diagnosing any issues with your processing queues.
+
+```
+docker run -it -p 9000:9000 \
+    -e KAFKA_BROKERCONNECT=localhost:9092 \
+    obsidiandynamics/kafdrop
+```
+
+Then connect your browser to [http://localhost:9000].
