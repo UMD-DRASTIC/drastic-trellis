@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: {{ .Release.Name }}-tika-deployment
+  name: tika
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Release.Name }}-tika-pod
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.network/drastic-trellis-drastic: "true"
+        app.kubernetes.io/name: {{ .Release.Name }}-tika-pod
+    spec:
+      containers:
+        - command:
+            - /config/run_tika_server.sh
+          env:
+            - name: TIKA_VERSION
+              value: "2.9.1"
+            - name: TIKA_SERVER_CLASS
+              value: org.apache.tika.server.TikaServerCli
+          image: apache/tika:2.9.1.0-full
+          name: tika
+          # ports:
+          #   - containerPort: 9998
+          #     hostPort: 9998
+          #     protocol: TCP
+          resources: 
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          volumeMounts:
+            - mountPath: /ner
+              name: tika-ner-dir
+            - mountPath: /config
+              name: tika-config-dir
+      restartPolicy: Always
+      volumes:
+        - name: tika-ner-dir
+          emptyDir: {}
+        - name: tika-config-dir
+          configMap:
+            name: tika-configmap
+            items:
+              - key: "tika-config.xml"
+                path: "tika-config.xml"
+              - key: "run_tika_server.sh"
+                path: "run_tika_server.sh"
+                mode: 0755
+status: {}

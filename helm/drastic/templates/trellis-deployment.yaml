@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: {{ .Release.Name }}-trellis-deployment
+  name: trellis
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Release.Name }}-trellis-pod
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+      creationTimestamp: null
+      labels:
+        io.kompose.network/drastic: "true"
+        app.kubernetes.io/name: {{ .Release.Name }}-trellis-pod
+    spec:
+      containers:
+        - args:
+          env:
+            - name: "MP_JWT_VERIFY_PUBLICKEY_LOCATION"
+              value: "https://www.trellisldp.org/tests/jwks.json"  # TODO: fix this
+            - name: "QUARKUS_DATASOURCE_USERNAME"
+              value: {{ .Values.global.postgresql.auth.username | quote }}
+            - name: "QUARKUS_DATASOURCE_PASSWORD"
+              value: {{ .Values.global.postgresql.auth.password | quote }}
+            - name: "QUARKUS_DATASOURCE_JDBC_URL"
+              value: "jdbc:postgresql://{{ .Release.Name }}-postgresql-hl/{{ .Values.global.postgresql.auth.database }}"
+            - name: "TRELLIS_FILE_BINARY_PATH"
+              value: "/opt/trellis/data/binary"
+            - name: "TRELLIS_FILE_MEMENTO_PATH"
+              value: /opt/trellis/data/memento
+          image: ghcr.io/trellis-ldp/trellis/trellis-postgresql:0.19.0
+          name: trellis
+          # ports:
+          #   - containerPort: 8080
+          #     hostPort: 8080
+          #     protocol: TCP
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "1G"
+              cpu: "500m"
+          volumeMounts:
+            - mountPath: /opt/trellis/data
+              name: trellis-claim0
+      restartPolicy: Always
+      volumes:
+        - name: trellis-claim0
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-trellis-claim
+status: {}

@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: {{ .Release.Name }}-fuseki-deployment
+  name: fuseki
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Release.Name }}-fuseki-pod
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.network/drastic-trellis-drastic: "true"
+        app.kubernetes.io/name: {{ .Release.Name }}-fuseki-pod
+    spec:
+      containers:
+        - args:
+            - --tdb2
+            - --update
+            - --loc
+            - databases/DB2
+            - /ds
+          image: gregjan/fuseki:latest
+          name: fuseki
+          ports:
+            - containerPort: 3030
+              hostPort: 3030
+              protocol: TCP
+          resources: 
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          volumeMounts:
+            - mountPath: /fuseki/databases/DB2
+              name: fuseki-claim0
+      restartPolicy: Always
+      volumes:
+        - name: fuseki-claim0
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-fuseki-claim
+status: {}

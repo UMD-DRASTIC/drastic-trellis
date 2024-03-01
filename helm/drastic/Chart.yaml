@@ -1,0 +1,20 @@
+name: DRASTIC
+description: A Helm chart for the Digital Repository at Scale that Invites Computation (DRASTIC)
+version: 0.0.1
+apiVersion: v2
+keywords:
+  - DRASTIC
+  - Trellis LDP
+  - Linked Data Platform
+  - triple store
+  - digital repository
+annotations:
+  meta.helm.sh/release-name: "full-coral"
+dependencies:
+  - name: postgresql
+    repository: https://charts.bitnami.com/bitnami
+    version: "14.0.2"
+    #condition: postgresql.enabled
+  - name: kafka
+    repository: https://charts.bitnami.com/bitnami
+    version: "26.8.5"

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: {{ .Release.Name }}-tika-service
+  name: tika
+spec:
+  ports:
+    - name: "9998"
+      port: 9998
+      targetPort: 9998
+  selector:
+    app.kubernetes.io/name: {{ .Release.Name }}-tika-deployment
+status:
+  loadBalancer: {}
